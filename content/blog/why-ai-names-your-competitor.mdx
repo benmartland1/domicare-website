@@ -1,0 +1,73 @@
+---
+title: "Why ChatGPT names your competitor instead of your care home"
+slug: "why-ai-names-your-competitor"
+date: "2026-08-19"
+excerpt: "It is almost never because the other home is better. It is because the other home is easier for a machine to describe. Here are the six reasons we see most often, in order."
+author: "Ben Martland"
+tags: ["AI search", "AEO", "CQC"]
+status: "published"
+metaTitle: "Why AI names your competitor instead of your care home"
+metaDescription: "Six concrete reasons AI assistants name another home instead of yours — entity ambiguity, missing specialisms, contradictory records — and what to do about each."
+---
+
+When a home first sees an AI visibility report, the reaction is usually the same: *why them and not us, we're the better home*. Often that is true. It is also, from the model's point of view, beside the point.
+
+An assistant answering "best care home for dementia near Preston" is not making a quality judgement. It is doing something much more mechanical: assembling a confident sentence from sources it trusts. It names the homes it can describe. Below are the six reasons, in roughly the order of how often we find them.
+
+## 1. It cannot tell which entity you are
+
+This is the most common and the least interesting problem, which is exactly why it goes unfixed.
+
+Care homes are frequently registered under a provider name that differs from the trading name on the sign, which differs again from the name on the website, which differs from the name on the carehome.co.uk listing. "Oakfield" on the door, "Oakfield Care Home" on Google, "Oakfield Residential Ltd" at Companies House, and a CQC location record under a group name the family has never heard of.
+
+A model reading those sources cannot confidently establish that they are one thing. So it hedges, and hedging means naming something else.
+
+**The fix:** pick one canonical name and one canonical address format, and make every source use it. Where the legal entity genuinely differs, state the relationship explicitly in writing on your own site: *"Oakfield Care Home is operated by Oakfield Residential Ltd, registered with the CQC as [name]."* That single sentence does more than most content programmes.
+
+## 2. Your specialisms are implied rather than stated
+
+Almost every care home website in the country contains a paragraph like: *"We provide person-centred care in a warm, homely environment where every resident is treated as an individual."*
+
+That sentence is true, well-meant, and completely useless to a machine. It contains no matchable fact. It does not say whether you take nursing residents, whether you have a dementia unit, whether you accept respite, whether you can support someone with complex needs or a PEG feed or challenging behaviour.
+
+When a family asks about dementia care specifically, the model matches against homes that have said the word "dementia" in a structured, credible place. If you offer it and have not said so plainly, you will lose to a home that does less but says more.
+
+**The fix:** list what you are registered for and what you actually accept, in plain nouns, on your own site and in every listing that has a services field. Not as marketing copy — as a stated list.
+
+## 3. Your sources contradict each other
+
+Your CQC record says 42 beds. Your carehome.co.uk listing says 38. Your website says "over 40". Your Google profile has no capacity at all and lists your category as "Retirement home" rather than "Nursing home".
+
+Individually, none of these is serious. Collectively, they lower the model's confidence in every claim about you — including the ones that are correct and flattering.
+
+**The fix:** an afternoon with all four open side by side. This is genuinely the highest-return hour available to most homes, and it costs nothing.
+
+## 4. There is nothing to quote
+
+Assistants like to attribute. Given the choice between naming a home it can say something specific about and naming one it cannot, it takes the first every time.
+
+If your entire published footprint is a website with six pages of atmosphere copy and a set of five-star reviews that all say "lovely staff", there is nothing quotable. A competitor with three detailed reviews describing a specific transition, a named activities programme, and a page explaining exactly how fees work has given the model raw material.
+
+**The fix:** publish things that contain facts. A page on what your dementia unit does differently. A page on fees that states actual numbers and what they include. A page on what happens in the first week after a move. Families want these too — this is not a machine-only exercise.
+
+## 5. Your website is not machine-readable
+
+This one is technical and unglamorous. If your site has no schema markup, an assistant has to infer everything from prose. If it does have markup declaring that this is a residential care facility at a specific address with these services and this price range, the model has structured facts rather than inferences.
+
+Most care home sites — including expensive ones — have no meaningful structured data at all. Adding it is a one-off job with a permanent effect.
+
+**The fix:** proper `LocalBusiness` / `ResidentialCareFacility` markup per home, an `llms.txt` summary of the site, and clean, unique page titles. None of this is visible to visitors, and all of it is visible to the systems making the introduction.
+
+## 6. You are genuinely outranked on the thing being asked
+
+Sometimes the honest answer is that the competitor really is the stronger match for that specific question. They have an Outstanding rating, or they are the only home in the area with a dedicated young-onset dementia service, or they have forty reviews to your four.
+
+We say this plainly because the first five problems are fixable in weeks and this one is not. But even here the picture is usually less bleak than it looks: "outranked for *this* question" is not "invisible". A home that cannot win "best care home in [large town]" can very often win "care home in [town] that takes respite at short notice" or "nursing home near [village]" — questions with less competition and, frequently, a family closer to actually enquiring.
+
+## The pattern underneath all six
+
+Five of these six reasons are about **legibility**, not quality. The home that gets named is not necessarily the one that provides better care. It is the one whose public record is complete, consistent and specific enough that a machine can describe it without risk.
+
+That is an unfair basis on which to compete, and it is also a genuinely good opportunity, because almost nobody in the sector has done the work yet. The homes fixing this now are competing against a field that has largely not noticed the game changed.
+
+If you want to see where you stand, the fastest thing you can do is open ChatGPT and ask it the questions a family in your area would ask. The answer tells you more in two minutes than most marketing reports do in twenty pages.

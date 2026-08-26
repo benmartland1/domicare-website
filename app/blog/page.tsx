@@ -1,0 +1,138 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllPosts } from "@/lib/blog";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { CTA } from "@/components/CTA";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Practical writing for care operators on how families now find a home — AI search visibility, CQC and directory records, and Google Ads that produce enquiries rather than job applications.",
+  alternates: { canonical: "/blog" },
+};
+
+function formatDate(iso: string) {
+  try {
+    return new Date(iso).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  } catch {
+    return iso;
+  }
+}
+
+export default function BlogIndexPage() {
+  const posts = getAllPosts();
+  const [featured, ...rest] = posts;
+
+  return (
+    <>
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 grid-backdrop" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
+          <ScrollReveal as="span" className="eyebrow">The DomiCare journal</ScrollReveal>
+          <ScrollReveal delay={60}>
+            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.5rem,6vw,5rem)]">
+              How families actually find a care home.
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal delay={140}>
+            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-slate)]">
+              Written for people who run homes, not for marketers. What the assistants say,
+              why they say it, and what is worth doing about it.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {posts.length === 0 ? (
+        <section className="mx-auto max-w-3xl px-6 py-20 lg:px-10">
+          <p className="text-[color:var(--color-slate)]">Articles coming soon.</p>
+        </section>
+      ) : (
+        <>
+          {featured && (
+            <section className="relative mx-auto mt-10 max-w-7xl px-6 lg:px-10">
+              <ScrollReveal>
+                <Link
+                  href={`/blog/${featured.slug}`}
+                  className="card group grid overflow-hidden p-10 transition-all lg:grid-cols-[1fr_1fr] lg:p-12"
+                >
+                  <div>
+                    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-[color:var(--color-sky)]">
+                      <span>Featured</span>
+                      <span className="h-px w-8 bg-[color:var(--color-sky)]/60" />
+                      <span className="text-[color:var(--color-slate-2)]">{featured.readingTimeText}</span>
+                    </div>
+                    <h2 className="display mt-6 text-balance text-3xl sm:text-4xl lg:text-5xl">
+                      {featured.title}
+                    </h2>
+                    <p className="mt-6 max-w-xl text-[color:var(--color-slate)]">
+                      {featured.excerpt}
+                    </p>
+                    <div className="mt-8 flex items-center gap-3 text-sm">
+                      <span className="text-[color:var(--color-slate)]">{formatDate(featured.date)}</span>
+                      <span className="text-[color:var(--color-slate)]/30">·</span>
+                      <span className="text-[color:var(--color-slate)]">{featured.author}</span>
+                    </div>
+                  </div>
+                  <div className="hidden items-center justify-center lg:flex">
+                    <div className="relative h-64 w-64">
+                      <div
+                        className="absolute inset-0 rounded-full bg-[color:var(--color-sky)]/20 blur-3xl transition-transform duration-700 group-hover:scale-110"
+                        aria-hidden
+                      />
+                      <div className="relative grid h-full w-full place-items-center rounded-full border border-[color:var(--color-line)] bg-gradient-to-br from-[color:var(--color-surface)] to-transparent">
+                        <span className="display text-6xl text-[color:var(--color-sky)]">→</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            </section>
+          )}
+
+          <section className="relative mx-auto mt-12 max-w-7xl px-6 lg:px-10">
+            <div className="grid gap-6 lg:grid-cols-3">
+              {rest.map((post, i) => (
+                <ScrollReveal key={post.slug} delay={(i % 3) * 80}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="card group flex h-full flex-col justify-between gap-8 p-8"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-slate-2)]">
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <span key={tag} className="text-[color:var(--color-sky)]">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="display mt-5 text-2xl leading-tight text-balance sm:text-[1.75rem]">
+                        {post.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-slate)]">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-[color:var(--color-slate-2)]">
+                      <span>{formatDate(post.date)}</span>
+                      <span>{post.readingTimeText}</span>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
+
+      <CTA
+        heading="Want this playbook applied to your brand?"
+        sub="Book a call with Ben. We'll tell you what to ignore, what to prioritise, and how long it'll take to show up."
+      />
+    </>
+  );
+}

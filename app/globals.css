@@ -1,0 +1,869 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Book.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Two signature faces (both SIL Open Font License 1.1, self-hosted) so the two
+   autographs read as two different hands rather than one typeface set twice.
+   Homemade Apple is a heavy looping pen; Zeyada is thinner and more angular. */
+@font-face {
+  font-family: "SignatureA";
+  src: url("/fonts/HomemadeApple-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SignatureB";
+  src: url("/fonts/Zeyada-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* ---------------------------------------------------------------------
+     DomiCare palette, sampled directly from the brand logo files.
+     The mark is an eight-dot orbit running from navy through to bright sky;
+     every colour below is one of those dots or the ground they sit on.
+     --------------------------------------------------------------------- */
+  --color-canvas: #f7fbfd;      /* page ground — the logo's background */
+  --color-canvas-2: #edf5fb;    /* alternating band */
+  --color-surface: #ffffff;     /* cards */
+
+  --color-navy: #1f3a5f;        /* wordmark, headings, dark sections */
+  --color-navy-2: #2c4a6e;
+  --color-ocean: #2e6da8;
+  --color-sky: #29a8e0;         /* primary accent — the brightest dot */
+  --color-sky-2: #5bbce8;
+  --color-mist: #8fd0f0;
+  --color-pale: #c5e4f5;
+
+  --color-slate: #445b76;       /* body text */
+  --color-slate-2: #6b7f96;     /* muted text, placeholders */
+
+  /* Hairlines and dividers. One token so a surface change is one edit. */
+  --color-line: rgba(31, 58, 95, 0.13);
+  --color-line-strong: rgba(31, 58, 95, 0.22);
+
+  /* Retained for the light components lifted from the parent codebase. */
+  --color-paper: #f7fbfd;
+  --color-paper-2: #edf5fb;
+  --color-ink: #1f3a5f;
+  --color-ink-2: #445b76;
+  --color-ink-3: #6b7f96;
+
+  --font-display: "Axiforma", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Axiforma", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+}
+
+:root {
+  color-scheme: light;
+  --grid-line: rgba(31, 58, 95, 0.035);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html, body {
+  background-color: var(--color-canvas);
+  color: var(--color-slate);
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: -0.005em;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-sky);
+  color: #ffffff;
+}
+
+/* Reusable aesthetic utilities */
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--color-navy);
+  }
+
+  /* Dark bands. The brief is a light site with a few small navy sections, so
+     these are opt-in wrappers rather than a second theme: set the ground and
+     flip the four text tokens the components inside actually read. */
+  .on-navy {
+    /* Literal, not var(--color-navy): custom properties redefined in this same
+       rule resolve to their NEW value, so painting with the token here would
+       fill the band with the white it is about to become. */
+    background: #1f3a5f;
+    --color-navy: #ffffff;
+    --color-slate: #d6e4f2;
+    --color-slate-2: #9fb6cd;
+    --color-line: rgba(255, 255, 255, 0.16);
+    --color-line-strong: rgba(255, 255, 255, 0.28);
+    --color-surface: rgba(255, 255, 255, 0.06);
+    color: var(--color-slate);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    color: var(--color-ocean);
+  }
+  .on-navy .eyebrow {
+    color: var(--color-sky-2);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  will-change: transform;
+}
+
+/* Navy fill, not sky. On a pale ground the navy is the confident, legible
+   choice and the sky reads as the highlight around it. */
+.btn-primary {
+  background: var(--color-navy);
+  color: #ffffff;
+  box-shadow: 0 10px 30px -12px rgba(31, 58, 95, 0.55);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background: #17304f;
+  box-shadow: 0 16px 38px -10px rgba(31, 58, 95, 0.6);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-navy);
+  border: 1px solid var(--color-line-strong);
+}
+.btn-ghost:hover {
+  border-color: var(--color-sky);
+  color: var(--color-ocean);
+}
+
+/* Inside a navy band the primary button inverts so it still reads as primary. */
+.on-navy .btn-primary {
+  background: var(--color-sky);
+  color: #06263f;
+  box-shadow: 0 10px 34px -12px rgba(41, 168, 224, 0.6);
+}
+.on-navy .btn-primary:hover {
+  background: #45b6e6;
+}
+.on-navy .btn-ghost {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.on-navy .btn-ghost:hover {
+  border-color: var(--color-sky);
+  color: var(--color-sky);
+}
+
+/* Grain texture overlay — SVG inline for zero HTTP cost */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+}
+
+/* Subtle grid backdrop for hero and section headers */
+.grid-backdrop {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 110% 90% at 40% -10%, rgba(0,0,0,0.9), transparent 68%);
+  mask-image: radial-gradient(ellipse 110% 90% at 40% -10%, rgba(0,0,0,0.9), transparent 68%);
+}
+
+/* On a pale ground the glows are atmosphere, not light sources — heavily
+   dialled back so they tint rather than bloom. Restored to full strength
+   inside navy bands, where there is something for them to glow against. */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+.on-navy .glow {
+  opacity: 0.4;
+}
+
+/* Faint light grid backdrop for cream landing-page heroes — masked so it fades
+   out at the edges rather than reading as a boxed panel. */
+.grid-backdrop-light {
+  background-image:
+    linear-gradient(to right, rgba(20, 17, 13, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 17, 13, 0.04) 1px, transparent 1px);
+  background-size: 58px 58px;
+  -webkit-mask-image: radial-gradient(ellipse 92% 74% at 50% 18%, rgba(0,0,0,0.8), transparent 78%);
+  mask-image: radial-gradient(ellipse 92% 74% at 50% 18%, rgba(0,0,0,0.8), transparent 78%);
+}
+
+/* Engine "live scan" pulse — staggered per chip in EngineStrip. */
+@keyframes enginePulse {
+  0%, 100% { opacity: 0.18; transform: scale(0.7); }
+  45% { opacity: 1; transform: scale(1.3); }
+}
+.engine-pulse {
+  animation: enginePulse 1.5s ease-in-out infinite;
+}
+
+/* Gentle float for the hero report mockup. */
+@keyframes reportFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.report-float {
+  animation: reportFloat 4s ease-in-out infinite;
+}
+
+/* Tasteful CTA pulse — a soft breathing ring + micro-scale, no flashiness. */
+@keyframes ctaPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.7), 0 0 0 0 rgba(1, 99, 76, 0);
+  }
+  50% {
+    transform: scale(1.018);
+    box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.78), 0 0 0 10px rgba(1, 99, 76, 0.07);
+  }
+}
+.cta-pulse {
+  animation: ctaPulse 2.6s ease-in-out infinite;
+}
+.cta-pulse:hover {
+  animation-play-state: paused;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 1px 2px rgba(31, 58, 95, 0.04), 0 18px 40px -32px rgba(31, 58, 95, 0.35);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  border-color: color-mix(in oklab, var(--color-sky) 55%, transparent);
+  box-shadow: 0 1px 2px rgba(31, 58, 95, 0.05), 0 26px 54px -30px rgba(31, 58, 95, 0.4);
+}
+.on-navy .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+.on-navy .card:hover {
+  border-color: rgba(41, 168, 224, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, color-mix(in oklab, var(--color-sky) 50%, transparent), transparent);
+}
+
+/* Paper / light-mode reading surface — used for blog article bodies */
+.on-paper {
+  background: var(--color-paper);
+  color: var(--color-ink-2);
+  --paper-hairline: rgba(17, 17, 17, 0.08);
+}
+
+/* Transition: dark → paper with a hairline.
+   The hairline catches light and signals the surface change. */
+.paper-seam {
+  position: relative;
+  background: linear-gradient(to bottom, var(--color-canvas) 0%, var(--color-canvas) 50%, var(--color-paper) 50%, var(--color-paper) 100%);
+  height: 2px;
+}
+.paper-seam::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent 5%, color-mix(in oklab, var(--color-sky) 55%, transparent) 50%, transparent 95%);
+  opacity: 0.7;
+}
+
+/* MDX prose styles for blog posts */
+.prose-dsrc {
+  color: var(--color-slate);
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.prose-dsrc h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.prose-dsrc h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  color: var(--color-navy);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose-dsrc p { margin-bottom: 1.25rem; }
+.prose-dsrc a {
+  color: var(--color-sky);
+  text-decoration: none;
+  background-image: linear-gradient(to right, var(--color-sky), var(--color-sky));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease;
+}
+.prose-dsrc a:hover { background-size: 100% 2px; }
+.prose-dsrc strong { color: var(--color-navy); font-weight: 600; }
+.prose-dsrc ul, .prose-dsrc ol { padding-left: 1.25rem; margin-bottom: 1.5rem; }
+.prose-dsrc ul li { list-style: none; position: relative; margin-bottom: 0.5rem; padding-left: 1rem; }
+.prose-dsrc ul li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.75rem;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-sky);
+}
+.prose-dsrc ol li { margin-bottom: 0.5rem; }
+.prose-dsrc blockquote {
+  border-left: 2px solid var(--color-sky);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  margin: 2rem 0;
+  color: var(--color-navy);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.prose-dsrc code {
+  background: color-mix(in oklab, var(--color-navy) 8%, transparent);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.4rem;
+  font-size: 0.92em;
+}
+.prose-dsrc table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95em;
+  table-layout: auto;
+}
+.prose-dsrc thead {
+  background: color-mix(in oklab, var(--color-navy) 3%, transparent);
+}
+.prose-dsrc thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-navy);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-sky) 35%, transparent);
+}
+.prose-dsrc tbody td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-navy) 6%, transparent);
+}
+.prose-dsrc tbody tr:last-child td {
+  border-bottom: none;
+}
+.prose-dsrc tbody tr:hover {
+  background: color-mix(in oklab, var(--color-navy) 2%, transparent);
+}
+
+/* ====================================================================== */
+/* Paper prose — mirrors .prose-dsrc for dark→light blog body             */
+/* ====================================================================== */
+.prose-paper {
+  color: var(--color-ink-2);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+.prose-paper h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-top: 3.25rem;
+  margin-bottom: 1rem;
+}
+.prose-paper h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  color: var(--color-ink);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose-paper p { margin-bottom: 1.25rem; }
+.prose-paper a {
+  color: var(--color-ocean);
+  text-decoration: none;
+  background-image: linear-gradient(to right, var(--color-ocean), var(--color-ocean));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease, color 0.25s ease;
+}
+.prose-paper a:hover { background-size: 100% 2px; }
+.prose-paper strong { color: var(--color-ink); font-weight: 600; }
+.prose-paper ul, .prose-paper ol { padding-left: 1.25rem; margin-bottom: 1.5rem; }
+.prose-paper ul li { list-style: none; position: relative; margin-bottom: 0.5rem; padding-left: 1rem; }
+.prose-paper ul li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.75rem;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-ocean);
+}
+.prose-paper ol li { margin-bottom: 0.5rem; }
+.prose-paper blockquote {
+  border-left: 3px solid var(--color-ocean);
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  margin: 2rem 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.prose-paper code {
+  background: color-mix(in oklab, var(--color-ink) 6%, transparent);
+  color: var(--color-ink);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.4rem;
+  font-size: 0.92em;
+}
+
+.prose-paper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95em;
+  table-layout: auto;
+}
+.prose-paper thead {
+  background: var(--color-paper-2);
+}
+.prose-paper thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-ink);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-ocean);
+}
+.prose-paper tbody td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+.prose-paper tbody tr:last-child td { border-bottom: none; }
+.prose-paper tbody tr:hover {
+  background: color-mix(in oklab, var(--color-ink) 3%, transparent);
+}
+
+/* Paper variant of the TL;DR callout */
+.prose-paper h2#tldr {
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+  padding: 1.35rem 1.75rem 0.3rem;
+  background: color-mix(in oklab, var(--color-sky) 12%, var(--color-paper));
+  border: 1px solid color-mix(in oklab, var(--color-ocean) 35%, transparent);
+  border-bottom: none;
+  border-left-width: 3px;
+  border-left-color: var(--color-ocean);
+  border-top-left-radius: 0.9rem;
+  border-top-right-radius: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-ocean);
+  line-height: 1.2;
+}
+.prose-paper h2#tldr + p {
+  margin-top: 0;
+  margin-bottom: 2.25rem;
+  padding: 0.4rem 1.75rem 1.5rem;
+  background: color-mix(in oklab, var(--color-sky) 12%, var(--color-paper));
+  border: 1px solid color-mix(in oklab, var(--color-ocean) 35%, transparent);
+  border-top: none;
+  border-left-width: 3px;
+  border-left-color: var(--color-ocean);
+  border-bottom-left-radius: 0.9rem;
+  border-bottom-right-radius: 0.9rem;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+/* TL;DR callout — styles the "## TL;DR" heading + its following paragraph as one box */
+.prose-dsrc h2#tldr {
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+  padding: 1.35rem 1.75rem 0.3rem;
+  background: color-mix(in oklab, var(--color-sky) 6%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-sky) 28%, transparent);
+  border-bottom: none;
+  border-left-width: 3px;
+  border-left-color: var(--color-sky);
+  border-top-left-radius: 0.9rem;
+  border-top-right-radius: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-sky);
+  line-height: 1.2;
+}
+.prose-dsrc h2#tldr + p {
+  margin-top: 0;
+  margin-bottom: 2.25rem;
+  padding: 0.4rem 1.75rem 1.5rem;
+  background: color-mix(in oklab, var(--color-sky) 6%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-sky) 28%, transparent);
+  border-top: none;
+  border-left-width: 3px;
+  border-left-color: var(--color-sky);
+  border-bottom-left-radius: 0.9rem;
+  border-bottom-right-radius: 0.9rem;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: var(--color-navy);
+}
+
+/* Scroll reveal primitive */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 36s linear infinite;
+  animation-play-state: running;
+  width: max-content;
+  display: flex;
+  gap: 4rem;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Cursor spotlight — used by SpotlightCard */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--spot-x, -200px) var(--spot-y, -200px),
+    color-mix(in oklab, var(--color-sky) 18%, transparent),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.spotlight:hover::before { opacity: 1; }
+.spotlight > * { position: relative; z-index: 1; }
+
+/* Magnetic button — pairs with MagneticButton component */
+.magnetic {
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
+  transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+/* Header: animated underline under nav items */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-sky);
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* Logo micro-animation */
+.logo-mark {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+.logo-mark:hover {
+  filter: drop-shadow(0 0 12px color-mix(in oklab, var(--color-sky) 55%, transparent));
+  transform: translateY(-1px);
+}
+
+/* ====================================================================== */
+/* Recruitment vertical page — AI search demo + proof modules             */
+/* ====================================================================== */
+
+/* Light-surface routes. html/body are charcoal for the dark site, which shows
+   through the overscroll area on mobile behind a cream page (and forces a dark
+   colour-scheme onto form controls and scrollbars). Repaint from the page. */
+body:has([data-surface="paper"]),
+html:has([data-surface="paper"]) {
+  background-color: var(--color-paper);
+  color-scheme: light;
+}
+
+/* Blinking text caret for the mock composer and the streaming answer */
+@keyframes caretBlink {
+  0%, 45% { opacity: 1; }
+  55%, 100% { opacity: 0; }
+}
+.caret { animation: caretBlink 1s steps(1) infinite; }
+
+/* Highlighter sweep behind the brand name once it finishes streaming.
+   Animates background-size so it never fights the text stacking context. */
+@keyframes markSweep {
+  to { background-size: 100% 0.42em; }
+}
+.brand-mark {
+  padding: 0 0.06em;
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-sky) 55%, transparent),
+    color-mix(in oklab, var(--color-sky) 55%, transparent)
+  );
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 0.42em;
+  animation: markSweep 0.55s 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Shared entrance for streamed source chips and ranked answer rows */
+@keyframes demoIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.source-in { opacity: 0; animation: demoIn 0.4s ease-out forwards; }
+.row-in { animation: demoIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Availability map: swapping view fades and scales up slightly, so moving
+   between world and region reads as a zoom rather than a hard cut. */
+@keyframes mapZoom {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.map-zoom { animation: mapZoom 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Slower marquee for the dark claim ticker at the top of the page */
+.ticker-track {
+  animation: marquee 48s linear infinite;
+  width: max-content;
+  display: flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; opacity: 1; }
+  .brand-mark { animation: none; background-size: 100% 0.42em; }
+  .source-in { animation: none; opacity: 1; }
+  .row-in { animation: none; }
+  .ticker-track { animation: none; }
+  .map-zoom { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { animation: none; }
+  .magnetic { transform: none; transition: none; }
+  .spotlight::before { display: none; }
+  .engine-pulse { animation: none; opacity: 0.6; }
+  .report-float { animation: none; }
+  .cta-pulse { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ====================================================================== */
+/* CMS editor prose — deliberately close to .prose-paper so what a writer  */
+/* sees in the editor matches the published post                          */
+/* ====================================================================== */
+.cms-prose {
+  color: var(--color-ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.cms-prose > * + * { margin-top: 1.1rem; }
+.cms-prose h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-top: 2.4rem;
+}
+.cms-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.28rem;
+  color: var(--color-ink);
+  margin-top: 1.8rem;
+}
+.cms-prose strong { color: var(--color-ink); font-weight: 600; }
+.cms-prose a { color: var(--color-ocean); text-decoration: underline; text-underline-offset: 2px; }
+.cms-prose ul, .cms-prose ol { padding-left: 1.5rem; }
+.cms-prose ul { list-style: disc; }
+.cms-prose ol { list-style: decimal; }
+.cms-prose li { margin-top: 0.35rem; }
+.cms-prose li > p { margin: 0; }
+.cms-prose blockquote {
+  border-left: 3px solid var(--color-ocean);
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.cms-prose code {
+  background: color-mix(in oklab, var(--color-ink) 6%, transparent);
+  color: var(--color-ink);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.4rem;
+  font-size: 0.92em;
+}
+.cms-prose pre {
+  background: var(--color-canvas);
+  color: var(--color-navy);
+  padding: 1rem 1.15rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+.cms-prose pre code { background: none; color: inherit; padding: 0; }
+.cms-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.cms-prose hr { border: 0; border-top: 1px solid color-mix(in oklab, var(--color-ink) 12%, transparent); }
+
+/* Tables are editable in place, so the cell borders need to be visible */
+.cms-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  overflow: hidden;
+}
+.cms-prose th, .cms-prose td {
+  border: 1px solid color-mix(in oklab, var(--color-ink) 15%, transparent);
+  padding: 0.6rem 0.75rem;
+  vertical-align: top;
+  text-align: left;
+  position: relative;
+}
+.cms-prose th {
+  background: var(--color-paper-2);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.cms-prose .selectedCell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, var(--color-ocean) 12%, transparent);
+  pointer-events: none;
+}
+
+/* Placeholder text on the first empty line */
+.cms-prose p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: color-mix(in oklab, var(--color-ink) 35%, transparent);
+  pointer-events: none;
+}
