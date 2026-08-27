@@ -72,12 +72,12 @@ const faqs = [
   {
     question: "How much should we spend?",
     answer:
-      "Most single homes we work with sit between £600 and £1,500 a month in ad spend, depending on catchment competitiveness. That is deliberately modest, because the maths does not need to be aggressive: at a typical private fee, one additional admission a year pays for several years of that budget. Groups scale it per home rather than pooling it.",
+      "A single home usually needs somewhere between £600 and £1,500 a month in ad spend, depending on how competitive the catchment is. That is deliberately modest, because the maths does not need to be aggressive: at a typical private fee, one additional admission a year pays for several years of that budget. Groups scale it per home rather than pooling it.",
   },
   {
     question: "We tried Google Ads before and got nothing but job applicants.",
     answer:
-      "That is the single most common failure we see, and it is a structural problem rather than a bad-luck one. \"Care home jobs\", \"care assistant\", \"carer vacancies\" and dozens of variants share vocabulary with family searches, and a broad-match campaign with no negative list will burn most of its budget on them. Fixing it is unglamorous, mechanical and usually the biggest single improvement in the first month.",
+      "That is the most common way care home campaigns fail, and it is structural rather than bad luck. \"Care home jobs\", \"care assistant\", \"carer vacancies\" and dozens of variants share vocabulary with family searches, and a broad-match campaign with no negative list will burn most of its budget on them. Fixing it is unglamorous, mechanical and usually the biggest single improvement in the first month.",
   },
   {
     question: "Do you need access to our existing account?",
@@ -130,9 +130,9 @@ export default function GoogleAdsPage() {
           </ScrollReveal>
           <ScrollReveal delay={80}>
             <h1 className="display mt-10 text-balance text-[clamp(2.4rem,5.6vw,4.5rem)]">
-              Fill the beds
+              The families searching
               <br />
-              <span className="text-[color:var(--color-sky)]">you can fill this month.</span>
+              <span className="text-[color:var(--color-sky)]">for a bed this week.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={140}>

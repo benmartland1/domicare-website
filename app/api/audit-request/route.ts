@@ -57,7 +57,7 @@ export async function POST(request: Request) {
   const cleanHost = website.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domisearch.com";
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domicare.ai";
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
 
   if (!apiKey) {

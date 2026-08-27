@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const audienceId = process.env.RESEND_AUDIENCE_ID;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domisearch.com";
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domicare.ai";
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
 
   if (!apiKey) {

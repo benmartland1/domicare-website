@@ -18,7 +18,7 @@ export default function TermsPage() {
       <ScrollReveal delay={140}>
         <div className="prose-dsrc mt-10">
           <p>
-            These terms apply to your use of domisearch.com. Client engagements are governed by a
+            These terms apply to your use of domicare.ai. Client engagements are governed by a
             separate Master Services Agreement.
           </p>
 

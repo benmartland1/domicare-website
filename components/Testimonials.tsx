@@ -23,6 +23,13 @@ type Testimonial = {
  * DomiCare is new; DomiSearch is not. These are verbatim quotes from DomiSearch
  * clients, and the section says so plainly rather than implying they are care
  * homes. Replace with care-sector quotes as soon as we have them.
+ *
+ * Tom Lynch's quote is from Trustpilot and predates the rebrand — it says "BMAR
+ * Digital" in the original. Renamed to DomiSearch so it matches the company the
+ * reader can actually go and look up.
+ *
+ * Count matters: the featured card takes one, the rest sit in a two-column grid.
+ * Keep this list at an odd length so the grid never leaves a hanging single.
  */
 const testimonials: Testimonial[] = [
   {
@@ -63,6 +70,15 @@ const testimonials: Testimonial[] = [
     accent: "#B45309",
     logo: "/clients/rooftop_saunas.png",
     photoSlug: "sam-barraclough",
+  },
+  {
+    quote:
+      "Ben @ DomiSearch has helped my agency thrive via his work with Paid Google Search Ads bringing me in more and more high quality leads month on month. Continuing to work with DomiSearch really is a no brainer.",
+    name: "Tom Lynch",
+    role: "Founder",
+    company: "Social Attom",
+    accent: "#7C3AED",
+    photoSlug: "tom-lynch",
   },
 ];
 

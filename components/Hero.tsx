@@ -141,9 +141,15 @@ export function Hero() {
           initial={{ opacity: 0, y: reduce ? 0 : 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1, ease: [0.2, 0.8, 0.2, 1] }}
-          className="lg:justify-self-end"
+          className="w-full min-w-0"
         >
-          <div className="mx-auto w-full max-w-[560px]">
+          {/* Definite width, not shrink-to-fit. `justify-self-end` on a grid item
+              sizes it to its content, so `w-full` inside resolved against a width
+              that grew as the query typed and the answer streamed — the card
+              visibly widened mid-animation. Stretch the item and align with a
+              margin instead, and pin 560px at lg so width can never be
+              content-derived. Match any change here in the AEO hero. */}
+          <div className="mx-auto w-full max-w-[560px] lg:mr-0 lg:w-[560px]">
             <AISearchDemo
               query={DEMO_QUERY}
               answerParts={DEMO_ANSWER}

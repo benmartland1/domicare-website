@@ -28,7 +28,7 @@ export function ContactForm() {
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body?.error ?? "Something went wrong. Please email hi@domisearch.com.");
+        throw new Error(body?.error ?? "Something went wrong. Please email hi@domicare.ai.");
       }
       setStatus("success");
       form.reset();
