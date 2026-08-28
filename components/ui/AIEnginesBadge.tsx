@@ -222,10 +222,11 @@ export function AIEnginesBadge({ link, className }: Props) {
     }
     `;
 
-  // Badge now 340 × 54 (wider to fit 5 real logos comfortably beside the label)
-  const vbW = 340;
+  // 324 × 54 — same 54px card height, border inset, chip size and vertical
+  // inset as the Google Partner badge so the pair reads as one set.
+  const vbW = 324;
   const vbH = 54;
-  const chipSize = 38;
+  const chipSize = 30;
   const chipGap = 6;
   const chipY = (vbH - chipSize) / 2;
   const chipsTotal = engines.length * chipSize + (engines.length - 1) * chipGap;
@@ -236,7 +237,7 @@ export function AIEnginesBadge({ link, className }: Props) {
       ref={ref}
       href={link ?? "/services/aeo"}
       aria-label="DomiCare - AI Search Coverage"
-      className={`block h-auto w-[280px] cursor-pointer sm:w-[320px] ${className ?? ""}`}
+      className={`block h-auto w-[240px] cursor-pointer sm:w-[264px] ${className ?? ""}`}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
@@ -262,20 +263,15 @@ export function AIEnginesBadge({ link, className }: Props) {
             <mask id="aiebMask">
               <rect width={vbW} height={vbH} fill="white" rx="10" />
             </mask>
-            <linearGradient id="aiebSilver" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#F8F9FA" />
-              <stop offset="55%" stopColor="#E2E5E9" />
-              <stop offset="100%" stopColor="#C9CDD3" />
-            </linearGradient>
             <linearGradient id="aiebShineGrad" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-              <stop offset="50%" stopColor="#ffffff" stopOpacity="0.85" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="0.75" />
               <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
             </linearGradient>
           </defs>
 
-          {/* Silver card base */}
-          <rect width={vbW} height={vbH} rx="10" fill="url(#aiebSilver)" />
+          {/* Card base — identical fill and border to the Google Partner badge */}
+          <rect width={vbW} height={vbH} rx="10" fill="#F6F4EF" />
           <rect
             x="4"
             y="4"
@@ -283,32 +279,32 @@ export function AIEnginesBadge({ link, className }: Props) {
             height={vbH - 8}
             rx="8"
             fill="transparent"
-            stroke="#B2B5BA"
+            stroke="#C9C6C0"
             strokeWidth="1"
           />
 
-          {/* Label */}
+          {/* TRACKED ACROSS label — mirrors the CERTIFIED label opposite */}
           <text
             fontFamily="Helvetica-Bold, Helvetica, system-ui, sans-serif"
-            fontSize="8.5"
+            fontSize="9"
             fontWeight="bold"
             fill="#5F6368"
             letterSpacing="1.2"
             x="14"
-            y="22"
+            y="20"
           >
             TRACKED ACROSS
           </text>
+          {/* Main title — same size and baseline as "Google Partner" */}
           <text
             fontFamily="Helvetica-Bold, Helvetica, system-ui, sans-serif"
-            fontSize="12"
+            fontSize="16"
             fontWeight="bold"
             fill="#1F1F1F"
             x="14"
-            y="39"
-            letterSpacing="0.2"
+            y="40"
           >
-            AI ENGINES
+            AI Engines
           </text>
 
           {/* Engine chips row — real logos on white */}
@@ -319,7 +315,7 @@ export function AIEnginesBadge({ link, className }: Props) {
                 <rect
                   width={chipSize}
                   height={chipSize}
-                  rx="7"
+                  rx="6"
                   fill="#FFFFFF"
                   stroke="#D7D9DD"
                   strokeWidth="0.5"

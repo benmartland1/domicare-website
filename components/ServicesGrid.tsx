@@ -16,10 +16,11 @@ const services = [
     body:
       "Families ask ChatGPT, Gemini and Perplexity which home to consider before they ring anyone. We make yours the one they name — and the same work lifts you in normal Google search too. Most agencies do one or the other. We do both, from the same foundation.",
     bullets: [
-      "What ChatGPT, Gemini and Perplexity say about you, aligned across CQC, carehome.co.uk and Google",
-      "A page per home, per specialism and per town — written to be found by families and quoted by AI",
-      "The questions families search at midnight (costs, funding, what to ask) answered on your site",
-      "Monthly report of what AI and Google say about you and your rivals",
+      "Named and quoted by ChatGPT, Gemini and Perplexity",
+      "One story across CQC, carehome.co.uk and Google",
+      "A page per home, per specialism, per town",
+      "The cost and funding questions families ask, answered",
+      "Monthly report on you and your rivals",
     ],
     badge: "ai-engines" as const,
   },
@@ -32,6 +33,7 @@ const services = [
     bullets: [
       "Campaigns per home, per town, per specialism",
       "Private-pay intent prioritised over LA-funded",
+      "Landing pages built to take an enquiry, not just a click",
       "Enquiry tracking through to admission",
       "Transparent reporting your board can read",
     ],
@@ -66,10 +68,12 @@ function ServiceCard({
       >
         {/* Badge sits where the eyebrow tag used to live */}
         <div className="pointer-events-none">
+          {/* Widths are set so both badges render at the same height:
+              Google is 260x54, AI Engines is 324x54, target height 40px / 44px. */}
           {service.badge === "google" ? (
-            <GooglePartnerBadge className="w-[180px]! sm:w-[210px]!" />
+            <GooglePartnerBadge className="w-[193px]! sm:w-[212px]!" />
           ) : (
-            <AIEnginesBadge className="w-[240px]! sm:w-[280px]!" />
+            <AIEnginesBadge className="w-[240px]! sm:w-[264px]!" />
           )}
         </div>
 
@@ -78,14 +82,30 @@ function ServiceCard({
           {service.outcome}
         </p>
         <p className="mt-4 max-w-lg text-[color:var(--color-slate)]">{service.body}</p>
-        <ul className="mt-8 space-y-2 text-sm text-[color:var(--color-slate)]">
-          {service.bullets.map((b) => (
-            <li key={b} className="flex items-center gap-3">
-              <span className="h-1 w-1 rounded-full bg-[color:var(--color-sky)]" />
-              {b}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8 border-t border-[color:var(--color-line)] pt-6">
+          <ul className="space-y-2.5 text-sm text-[color:var(--color-slate)]">
+            {service.bullets.map((b) => (
+              <li key={b} className="flex items-start gap-3">
+                {/* mt nudges the tick onto the first line of a wrapping bullet */}
+                <svg
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[color:var(--color-sky)]"
+                >
+                  <path
+                    d="M3 8.4l3.3 3.3L13 4.8"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="mt-10 flex items-center gap-2 text-sm font-medium text-[color:var(--color-sky)] transition-transform duration-300 group-hover:translate-x-1">
           Explore service →
         </div>

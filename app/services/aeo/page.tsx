@@ -187,7 +187,7 @@ export default function AEOPage() {
         <div className="relative mx-auto grid max-w-7xl gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10 lg:pt-24">
           <div>
             <ScrollReveal>
-              <AIEnginesBadge className="w-[240px]! sm:w-[280px]!" />
+              <AIEnginesBadge className="w-[229px]! sm:w-[267px]!" />
             </ScrollReveal>
             <ScrollReveal delay={80}>
               <h1 className="display mt-10 text-balance text-[clamp(2.4rem,5.4vw,4.25rem)]">
