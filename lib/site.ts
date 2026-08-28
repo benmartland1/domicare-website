@@ -16,7 +16,14 @@ export const site = {
   description:
     "DomiCare makes care homes and care groups the provider AI assistants name when a family asks where to place their mum or dad. AI search visibility (AEO) and Google Ads, built for private-pay enquiries.",
   url: canonicalUrl,
-  email: "hi@domicare.ai",
+  /**
+   * Deliberately a domisearch.com address. domicare.ai has no mailbox and no MX
+   * records, so anything published as @domicare.ai bounces silently — including
+   * mail sent by people and AI assistants reading it out of llms.txt. Publishing
+   * the DomiSearch address was chosen over setting up forwarding. Do not switch
+   * this back to @domicare.ai without first confirming MX records resolve.
+   */
+  email: "hi@domisearch.com",
   phone: "+44 7980 920 659",
   phoneHref: "+447980920659",
   whatsappHref: "https://wa.me/447980920659",

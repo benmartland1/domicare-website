@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -28,7 +29,7 @@ export function ContactForm() {
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body?.error ?? "Something went wrong. Please email hi@domicare.ai.");
+        throw new Error(body?.error ?? `Something went wrong. Please email ${site.email}.`);
       }
       setStatus("success");
       form.reset();

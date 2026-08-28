@@ -66,7 +66,10 @@ left out to keep the first release simple.
       provisional. They are referenced from the homepage FAQ, the pricing page
       FAQ and the homepage JSON-LD — change all four together.
 - [ ] Point `domicare.ai` at a new Vercel project and set `NEXT_PUBLIC_SITE_URL`.
-- [ ] Set up `hi@domicare.ai` and `website@domicare.ai` in Resend.
+- [x] **Email decided.** Website mail sends from and delivers to the
+      `domisearch.com` domain, which is verified in Resend and has MX records.
+      The `domicare.ai` domain has neither, so no address on it is used or
+      published anywhere — `site.email` carries the reasoning.
 - [ ] Create a DomiCare Calendly link (currently pointing at the DomiSearch one
       via `site.calendly`).
 - [ ] Replace the DomiSearch testimonials in `components/Testimonials.tsx` with
