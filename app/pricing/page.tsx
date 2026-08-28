@@ -10,12 +10,12 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Published monthly retainers for care homes and care groups. Organic search visibility from £950, the combined occupancy programme from £2,450. Three-month minimum, no setup fees.",
+    "Published monthly retainers for care homes and care groups. Organic search visibility £950, paid search visibility £1,500, the combined occupancy programme £2,450 covering up to three homes. Three-month minimum, no setup fees.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing · DomiCare",
     description:
-      "Monthly retainers from £950. Organic search visibility, paid search visibility, or both — priced so a single home can start.",
+      "Monthly retainers from £950. Organic search visibility, paid search visibility, or the occupancy programme at £2,450 across up to three homes.",
     url: "/pricing",
   },
 };

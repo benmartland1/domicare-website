@@ -40,7 +40,7 @@ const homeFaqs = [
   {
     question: "How much does DomiCare cost?",
     answer:
-      "Organic search visibility for a single home starts at £950 a month. The combined occupancy programme — organic plus paid search visibility, covering up to three homes — starts at £2,450 a month. Paid search visibility (Google Ads) on its own starts at £1,200 a month plus your ad spend. Groups of four or more homes are priced per home. Monthly retainers, three-month minimum, no setup fee.",
+      "Organic search visibility for a single home is £950 a month. Paid search visibility (Google Ads) on its own is £1,500 a month plus your ad spend. The occupancy programme — organic plus paid search visibility, covering up to three homes — is £2,450 a month, the same as buying both channels for a single home. Groups of four or more homes are priced per home. Monthly retainers, three-month minimum, no setup fee.",
   },
   {
     question: "Is one extra resident really worth the fee?",
@@ -152,7 +152,7 @@ const homeGraph = {
               name: "Organic search visibility for care homes",
               url: `${site.url}/services/aeo`,
               description:
-                "Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly reporting on what AI assistants say about your home. From £950/month.",
+                "Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly reporting on what AI assistants say about your home. £950/month.",
               provider: { "@id": `${site.url}/#organization` },
             },
             priceSpecification: {
@@ -169,7 +169,7 @@ const homeGraph = {
               name: "Occupancy Programme",
               url: `${site.url}/pricing`,
               description:
-                "Organic and paid search visibility run as one strategy across up to three homes, reported on enquiries and admissions. From £2,450/month.",
+                "Organic and paid search visibility run as one strategy across up to three homes, reported on enquiries and admissions. £2,450/month, covering up to three homes.",
               provider: { "@id": `${site.url}/#organization` },
             },
             priceSpecification: {
@@ -186,12 +186,12 @@ const homeGraph = {
               name: "Paid search visibility (Google Ads) for care homes",
               url: `${site.url}/services/google-ads`,
               description:
-                "Google Ads built per home, per town and per specialism, prioritising private-pay enquiry intent and measured through to admission. From £1,200/month plus ad spend.",
+                "Google Ads built per home, per town and per specialism, prioritising private-pay enquiry intent and measured through to admission. £1,500/month plus ad spend.",
               provider: { "@id": `${site.url}/#organization` },
             },
             priceSpecification: {
               "@type": "PriceSpecification",
-              price: "1200",
+              price: "1500",
               priceCurrency: "GBP",
               unitText: "month",
             },
@@ -279,13 +279,6 @@ export default function HomePage() {
         <div className="mt-14">
           <PricingTable />
         </div>
-        <ScrollReveal delay={160}>
-          <p className="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-[color:var(--color-slate-2)]">
-            For context: one additional private resident at a typical UK fee is worth roughly
-            £60,000–£83,000 a year. That is the number every one of these retainers is measured
-            against.
-          </p>
-        </ScrollReveal>
       </section>
 
       <FounderSection />
