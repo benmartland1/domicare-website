@@ -29,7 +29,7 @@ const services = [
     title: "Paid search visibility",
     outcome: "Show up instantly for the families ready to enquire this week.",
     body:
-      "The families who still search the old way are ready to enquire now. We build and run Google Ads per home, per town and per specialism — measured on enquiries and admissions, not clicks.",
+      "The families who still search the old way are ready to enquire now. We build and run Google Ads per home, per town and per specialism — measured on enquiries and admissions, not clicks. The intent is already there — you're just making sure they find you first.",
     bullets: [
       "Campaigns per home, per town, per specialism",
       "Private-pay intent prioritised over LA-funded",
@@ -64,7 +64,7 @@ function ServiceCard({
         href={service.href}
         ref={ref}
         onMouseMove={onMouseMove}
-        className="card spotlight group relative block h-full overflow-hidden p-10"
+        className="card spotlight group relative flex h-full flex-col overflow-hidden p-10"
       >
         {/* Badge sits where the eyebrow tag used to live */}
         <div className="pointer-events-none">
@@ -81,7 +81,10 @@ function ServiceCard({
         <p className="mt-4 max-w-lg text-[15px] font-[500] leading-relaxed text-[color:var(--color-navy)]">
           {service.outcome}
         </p>
-        <p className="mt-4 max-w-lg text-[color:var(--color-slate)]">{service.body}</p>
+        {/* grow lets the shorter intro absorb the slack, keeping both dividers level */}
+        <p className="mt-4 max-w-lg grow text-[color:var(--color-slate)]">
+          {service.body}
+        </p>
         <div className="mt-8 border-t border-[color:var(--color-line)] pt-6">
           <ul className="space-y-2.5 text-sm text-[color:var(--color-slate)]">
             {service.bullets.map((b) => (
