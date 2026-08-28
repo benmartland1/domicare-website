@@ -68,9 +68,14 @@ export async function POST(request: Request) {
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? "hi@domisearch.com";
 
   if (!apiKey) {
+    // Fail loudly. Returning ok here showed the visitor "Got it" while the lead
+    // went nowhere but a log — the worst outcome, because nobody finds out.
+    // Same contract as /api/contact.
     console.error("[audit-request] RESEND_API_KEY missing - request not delivered:", { website, email });
-    // Don't fail the visitor; the lead is at least logged.
-    return NextResponse.json({ ok: true });
+    return NextResponse.json(
+      { error: `Could not submit. Please email ${site.email} directly.` },
+      { status: 500 },
+    );
   }
 
   const resend = new Resend(apiKey);
