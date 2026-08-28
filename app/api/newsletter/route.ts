@@ -26,8 +26,13 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const audienceId = process.env.RESEND_AUDIENCE_ID;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domicare.ai";
-  const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
+// INTERIM MAIL ROUTING — see app/api/contact/route.ts. Unlike the other routes,
+// the welcome send below goes to the SUBSCRIBER, so this from-address IS
+// visitor-facing: they receive "Ben at DomiCare <website@domisearch.com>".
+// Accepted deliberately while domicare.ai is unverified; the site states the
+// DomiSearch parent relationship openly. Revert once Resend verifies.
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "website@domisearch.com";
+  const notifyTo = process.env.CONTACT_TO_EMAIL ?? "hi@domisearch.com";
 
   if (!apiKey) {
     console.error("[newsletter] RESEND_API_KEY missing - signup not stored:", email);

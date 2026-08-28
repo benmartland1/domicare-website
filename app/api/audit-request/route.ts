@@ -57,8 +57,15 @@ export async function POST(request: Request) {
   const cleanHost = website.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domicare.ai";
-  const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
+// INTERIM MAIL ROUTING. domicare.ai is not yet verified in Resend and has no
+// mailbox, so website mail is sent from and delivered to the DomiSearch domain,
+// which is already verified. Vercel sets CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL
+// explicitly; these fallbacks only matter locally or if a var goes missing, and
+// pointing them at domicare.ai would fail to send rather than fail loudly.
+// Revert both to @domicare.ai once Resend verifies the domain.
+// Note: `from` is internal-only for this route — the visitor sees `replyTo`.
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "website@domisearch.com";
+  const notifyTo = process.env.CONTACT_TO_EMAIL ?? "hi@domisearch.com";
 
   if (!apiKey) {
     console.error("[audit-request] RESEND_API_KEY missing - request not delivered:", { website, email });
