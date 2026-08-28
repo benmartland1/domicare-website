@@ -25,7 +25,7 @@ export default function PrivacyPage() {
 
           <h2>What we collect</h2>
           <ul>
-            <li>Information you submit via our contact form (name, email, company, message).</li>
+            <li>Information you submit via our contact form or via lead forms on platforms such as Facebook and Instagram (name, email, phone number, company, message).</li>
             <li>Basic analytics data (pages visited, device type, referrer) via Vercel Analytics. We do not use third-party tracking cookies.</li>
             <li>Information exchanged during client engagements, held securely in our internal systems.</li>
           </ul>
@@ -33,6 +33,7 @@ export default function PrivacyPage() {
           <h2>How we use it</h2>
           <ul>
             <li>To respond to enquiries and provide proposals.</li>
+            <li>To contact you by email or phone about your enquiry.</li>
             <li>To deliver services contracted between us and our clients.</li>
             <li>To send marketing communications, including our weekly newsletter, to people who have previously enquired about our services.</li>
             <li>To improve our website and understand how visitors use it (in aggregate).</li>
@@ -64,8 +65,9 @@ export default function PrivacyPage() {
           <h2>Who we share it with</h2>
           <p>
             We use Resend to deliver contact-form emails and Vercel to host our site. These
-            providers process limited data on our behalf under their own privacy terms. We do
-            not sell personal data.
+            providers process limited data on our behalf under their own privacy terms. We use
+            Meta (Facebook/Instagram) advertising tools, including lead forms and the Meta pixel,
+            which process data under Meta&rsquo;s own privacy terms. We do not sell personal data.
           </p>
 
           <h2>Your rights</h2>
@@ -91,7 +93,7 @@ export default function PrivacyPage() {
             {site.country}.
           </p>
 
-          <p className="text-sm opacity-70">Last updated: 2026-08-17</p>
+          <p className="text-sm opacity-70">Last updated: 2026-08-28</p>
         </div>
       </ScrollReveal>
     </section>
