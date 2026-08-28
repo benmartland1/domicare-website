@@ -15,7 +15,7 @@ export function Footer() {
         <div>
           <Wordmark tone="navy" height={32} />
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-[color:var(--color-slate)]">
-            AI search visibility and Google Ads for care homes and care groups — so the
+            Organic and paid search visibility for care homes and care groups — so the
             families searching for care in your area find you, not the home down the road.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -38,8 +38,8 @@ export function Footer() {
         <div>
           <h4 className="eyebrow mb-4">Services</h4>
           <ul className="space-y-3 text-sm">
-            <li><Link href="/services/aeo" className="hover:text-[color:var(--color-sky)]">AI Search (AEO)</Link></li>
-            <li><Link href="/services/google-ads" className="hover:text-[color:var(--color-sky)]">Google Ads</Link></li>
+            <li><Link href="/services/aeo" className="hover:text-[color:var(--color-sky)]">Organic search visibility</Link></li>
+            <li><Link href="/services/google-ads" className="hover:text-[color:var(--color-sky)]">Paid search visibility</Link></li>
             <li><Link href="/pricing" className="hover:text-[color:var(--color-sky)]">Pricing</Link></li>
           </ul>
         </div>

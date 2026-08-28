@@ -10,22 +10,25 @@ import { AIEnginesBadge } from "./ui/AIEnginesBadge";
 const services = [
   {
     href: "/services/aeo",
-    title: "AI Search",
+    title: "Organic search visibility",
+    outcome:
+      "Get found when families search — on Google and in AI answers — without paying for every click.",
     body:
-      "Families ask ChatGPT and Gemini which home to consider before they ring anyone. We make your home the one the assistants name, and we show you every month what they actually said.",
+      "Families ask ChatGPT, Gemini and Perplexity which home to consider before they ring anyone. We make yours the one they name — and the same work lifts you in normal Google search too. Most agencies do one or the other. We do both, from the same foundation.",
     bullets: [
-      "Entity clarity across CQC, carehome.co.uk and Google",
-      "A machine-readable page per home and per specialism",
-      "Content that answers what families actually ask",
-      "Monthly report of what AI says about you and your rivals",
+      "What ChatGPT, Gemini and Perplexity say about you, aligned across CQC, carehome.co.uk and Google",
+      "A page per home, per specialism and per town — written to be found by families and quoted by AI",
+      "The questions families search at midnight (costs, funding, what to ask) answered on your site",
+      "Monthly report of what AI and Google say about you and your rivals",
     ],
     badge: "ai-engines" as const,
   },
   {
     href: "/services/google-ads",
-    title: "Google Ads",
+    title: "Paid search visibility",
+    outcome: "Show up instantly for the families ready to enquire this week.",
     body:
-      "The families who still search the old way are the ones ready to enquire this week. Campaigns built per home and per specialism, measured on enquiries and admissions, not clicks.",
+      "The families who still search the old way are ready to enquire now. We build and run Google Ads per home, per town and per specialism — measured on enquiries and admissions, not clicks.",
     bullets: [
       "Campaigns per home, per town, per specialism",
       "Private-pay intent prioritised over LA-funded",
@@ -71,7 +74,10 @@ function ServiceCard({
         </div>
 
         <h3 className="display mt-6 text-3xl sm:text-4xl">{service.title}</h3>
-        <p className="mt-5 max-w-lg text-[color:var(--color-slate)]">{service.body}</p>
+        <p className="mt-4 max-w-lg text-[15px] font-[500] leading-relaxed text-[color:var(--color-navy)]">
+          {service.outcome}
+        </p>
+        <p className="mt-4 max-w-lg text-[color:var(--color-slate)]">{service.body}</p>
         <ul className="mt-8 space-y-2 text-sm text-[color:var(--color-slate)]">
           {service.bullets.map((b) => (
             <li key={b} className="flex items-center gap-3">
@@ -94,7 +100,7 @@ export function ServicesGrid() {
       <SectionHeader
         eyebrow="Our services"
         title="Two ways families find you."
-        description="AI search is where the shortlist gets made. Google Ads is where the ready-to-enquire families are today. Run either on its own — they compound when you run both."
+        description="AI answers and Google rankings are where the shortlist gets written. Paid ads are where the ready-to-enquire families are today. Run either on its own — they compound when you run both."
       />
       <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-2">
         {services.map((service, idx) => (

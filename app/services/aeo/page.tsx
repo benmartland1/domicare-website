@@ -150,7 +150,7 @@ export default function AEOPage() {
       <JsonLd
         data={[
           serviceSchema({
-            name: "AI Search Visibility for care homes",
+            name: "Organic search visibility for care homes",
             description:
               "Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly reporting on what ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews say about your home.",
             url: `${site.url}/services/aeo`,
@@ -159,7 +159,7 @@ export default function AEOPage() {
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", url: site.url },
-            { name: "AI Search", url: `${site.url}/services/aeo` },
+            { name: "Organic search visibility", url: `${site.url}/services/aeo` },
           ]),
         ]}
       />
@@ -213,8 +213,8 @@ export default function AEOPage() {
                   Book a call
                   <span aria-hidden>→</span>
                 </Link>
-                <Link href="/contact" className="btn btn-ghost">
-                  Get a free visibility check
+                <Link href="/pricing" className="btn btn-ghost">
+                  See pricing
                 </Link>
               </div>
             </ScrollReveal>

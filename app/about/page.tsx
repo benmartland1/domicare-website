@@ -19,7 +19,7 @@ const aboutGraph = {
       logo: `${site.url}/brand/logo.png`,
       foundingDate: "2026",
       description:
-        "DomiCare is a UK marketing agency working exclusively with care homes, nursing homes and care groups. It is the care-sector practice of DomiSearch, a Google Partner search agency founded by Ben Martland in Manchester. DomiCare does two things: AI search visibility (AEO), so assistants like ChatGPT and Gemini name a home when a family asks for care in that area, and Google Ads aimed at private-pay enquiries.",
+        "DomiCare is a UK marketing agency working exclusively with care homes, nursing homes and care groups. It is the care-sector practice of DomiSearch, a Google Partner search agency founded by Ben Martland in Manchester. DomiCare does two things: organic search visibility, so assistants like ChatGPT and Gemini — and Google itself — name a home when a family asks for care in that area, and paid search visibility through Google Ads aimed at private-pay enquiries.",
       areaServed: { "@type": "Country", name: "United Kingdom" },
       parentOrganization: {
         "@type": "Organization",

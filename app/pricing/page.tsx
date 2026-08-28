@@ -10,12 +10,12 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Published monthly retainers for care homes and care groups. AI search visibility from £950, the combined occupancy programme from £2,450. Three-month minimum, no setup fees.",
+    "Published monthly retainers for care homes and care groups. Organic search visibility from £950, the combined occupancy programme from £2,450. Three-month minimum, no setup fees.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing · DomiCare",
     description:
-      "Monthly retainers from £950. AI search visibility, Google Ads, or both — priced so a single home can start.",
+      "Monthly retainers from £950. Organic search visibility, paid search visibility, or both — priced so a single home can start.",
     url: "/pricing",
   },
 };
@@ -89,7 +89,7 @@ export default function PricingPage() {
             <h1 className="display mt-5 text-balance text-[clamp(2.5rem,6vw,5rem)]">
               Published rates.{" "}
               <span className="text-[color:var(--color-sky)]">
-                No reveal on the call.
+                See the price before you book.
               </span>
             </h1>
           </ScrollReveal>

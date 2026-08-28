@@ -111,7 +111,7 @@ export default function GoogleAdsPage() {
           faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", url: site.url },
-            { name: "Google Ads", url: `${site.url}/services/google-ads` },
+            { name: "Paid search visibility", url: `${site.url}/services/google-ads` },
           ]),
         ]}
       />

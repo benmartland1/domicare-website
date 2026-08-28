@@ -23,13 +23,13 @@ type Tier = {
  */
 const tiers: Tier[] = [
   {
-    name: "Single home",
-    tagline: "One home, one catchment.",
+    name: "Organic search visibility",
+    tagline: "Single home, one catchment.",
     price: 950,
     features: [
       "Full AI visibility audit for your home and your town",
       "CQC, carehome.co.uk and Google Business Profile alignment",
-      "Schema and llms.txt so assistants can read your site",
+      "Your site rebuilt so AI assistants and Google can read and quote it",
       "Two AI-citable pages a month",
       "Monthly report of what ChatGPT, Gemini and Perplexity say about you",
     ],
@@ -37,7 +37,7 @@ const tiers: Tier[] = [
   },
   {
     name: "Occupancy programme",
-    tagline: "AI search and Google Ads, one strategy.",
+    tagline: "Organic and paid search, one strategy.",
     price: 2450,
     recommended: true,
     features: [
@@ -50,8 +50,8 @@ const tiers: Tier[] = [
     cta: { label: "Book a call", href: site.calendly, external: true },
   },
   {
-    name: "Google Ads",
-    tagline: "The families ready to enquire this week.",
+    name: "Paid search visibility",
+    tagline: "Google Ads for the families ready to enquire this week.",
     price: 1200,
     features: [
       "Account build or rebuild, run by a Google Partner",

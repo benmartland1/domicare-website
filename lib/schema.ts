@@ -10,7 +10,7 @@ export const organizationSchema = {
   email: site.email,
   telephone: site.phone,
   description:
-    "DomiCare is a UK marketing agency for care homes and care groups, specialising in AI search visibility (AEO) and Google Ads for private-pay enquiries.",
+    "DomiCare is a UK marketing agency for care homes and care groups, specialising in organic and paid search visibility for private-pay enquiries.",
   parentOrganization: {
     "@type": "Organization",
     name: site.parent.name,
@@ -42,7 +42,7 @@ export const professionalServiceSchema = {
   },
   areaServed: { "@type": "Country", name: "United Kingdom" },
   makesOffer: [
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI search visibility (AEO) for care homes" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Organic search visibility for care homes" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google Ads for care homes" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Care group multi-home visibility programme" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Enquiry landing page CRO" } },

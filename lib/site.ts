@@ -14,7 +14,7 @@ export const site = {
   },
   tagline: "Be the care home AI recommends.",
   description:
-    "DomiCare makes care homes and care groups the provider AI assistants name when a family asks where to place their mum or dad. AI search visibility (AEO) and Google Ads, built for private-pay enquiries.",
+    "DomiCare makes care homes and care groups the provider AI assistants name when a family asks where to place their mum or dad. Organic and paid search visibility, built for private-pay enquiries.",
   url: canonicalUrl,
   /**
    * Deliberately a domisearch.com address. domicare.ai has no mailbox and no MX
@@ -36,8 +36,8 @@ export const site = {
     x: "https://x.com/domisearch",
   },
   nav: [
-    { label: "AI Search", href: "/services/aeo" },
-    { label: "Google Ads", href: "/services/google-ads" },
+    { label: "Organic search", href: "/services/aeo" },
+    { label: "Paid search", href: "/services/google-ads" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
     { label: "Blog", href: "/blog" },

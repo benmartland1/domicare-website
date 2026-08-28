@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 const credentials = [
   "Five years running Google Ads, £3M+ managed spend",
   "Google Partner",
-  "Built the AEO practice at DomiSearch from 2024",
+  "Built the AI search practice at DomiSearch from 2024",
   "Care homes and care groups only — no other verticals",
   "Manchester-based, working across the UK",
 ];

@@ -35,12 +35,12 @@ const homeFaqs = [
   {
     question: "What does DomiCare actually do?",
     answer:
-      "Two things. AI search visibility (AEO): auditing what assistants currently say about your home, aligning your records across CQC, carehome.co.uk and Google, adding schema markup so your site is machine-readable, publishing pages that answer real family questions, and reporting monthly on what the assistants say about you and your competitors. And Google Ads: campaigns built per home, per town and per specialism, aimed at private-pay enquiries and measured on enquiries and admissions rather than clicks.",
+      "Two things. Organic search visibility: auditing what assistants and Google currently say about your home, aligning your records across CQC, carehome.co.uk and Google, rebuilding your site so AI assistants and Google can read and quote it, publishing pages that answer real family questions, and reporting monthly on what the assistants say about you and your competitors. And paid search visibility: Google Ads campaigns built per home, per town and per specialism, aimed at private-pay enquiries and measured on enquiries and admissions rather than clicks.",
   },
   {
     question: "How much does DomiCare cost?",
     answer:
-      "AI search visibility for a single home starts at £950 a month. The combined occupancy programme — AI search plus Google Ads, covering up to three homes — starts at £2,450 a month. Google Ads on its own starts at £1,200 a month plus your ad spend. Groups of four or more homes are priced per home. Monthly retainers, three-month minimum, no setup fee.",
+      "Organic search visibility for a single home starts at £950 a month. The combined occupancy programme — organic plus paid search visibility, covering up to three homes — starts at £2,450 a month. Paid search visibility (Google Ads) on its own starts at £1,200 a month plus your ad spend. Groups of four or more homes are priced per home. Monthly retainers, three-month minimum, no setup fee.",
   },
   {
     question: "Is one extra resident really worth the fee?",
@@ -95,7 +95,7 @@ const homeGraph = {
       },
       image: `${site.url}/brand/logo.png`,
       description:
-        "DomiCare is a UK marketing agency working exclusively with care homes and care groups. AI search visibility (AEO) and Google Ads, built to produce private-pay enquiries and admissions.",
+        "DomiCare is a UK marketing agency working exclusively with care homes and care groups. Organic and paid search visibility, built to produce private-pay enquiries and admissions.",
       slogan: site.tagline,
       parentOrganization: {
         "@type": "Organization",
@@ -149,7 +149,7 @@ const homeGraph = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "AI Search Visibility for care homes",
+              name: "Organic search visibility for care homes",
               url: `${site.url}/services/aeo`,
               description:
                 "Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly reporting on what AI assistants say about your home. From £950/month.",
@@ -169,7 +169,7 @@ const homeGraph = {
               name: "Occupancy Programme",
               url: `${site.url}/pricing`,
               description:
-                "AI search visibility and Google Ads run as one strategy across up to three homes, reported on enquiries and admissions. From £2,450/month.",
+                "Organic and paid search visibility run as one strategy across up to three homes, reported on enquiries and admissions. From £2,450/month.",
               provider: { "@id": `${site.url}/#organization` },
             },
             priceSpecification: {
@@ -183,7 +183,7 @@ const homeGraph = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Google Ads for care homes",
+              name: "Paid search visibility (Google Ads) for care homes",
               url: `${site.url}/services/google-ads`,
               description:
                 "Google Ads built per home, per town and per specialism, prioritising private-pay enquiry intent and measured through to admission. From £1,200/month plus ad spend.",
@@ -204,7 +204,7 @@ const homeGraph = {
       "@id": `${site.url}/#website`,
       url: site.url,
       name: site.name,
-      description: "AI search visibility and Google Ads for UK care homes and care groups.",
+      description: "Organic and paid search visibility for UK care homes and care groups.",
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-GB",
       potentialAction: {
@@ -273,7 +273,7 @@ export default function HomePage() {
       <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
         <SectionHeader
           eyebrow="Pricing"
-          title="Published rates. No discovery-call reveal."
+          title="Published rates. See the price before you book."
           description="Monthly retainers, three-month minimum, no setup fees. Priced so a single home can afford to start and a group gets the compounding benefit."
         />
         <div className="mt-14">

@@ -13,7 +13,7 @@ export function GET() {
   lines.push("");
   lines.push("## About");
   lines.push(
-    `${site.name} is a UK marketing agency working exclusively with care homes, nursing homes and care groups. Led by ${site.founder} from ${site.city}, ${site.country}. ${site.parent.blurb} We do two things: make a care home the provider AI assistants name when a family asks for care in that area (AEO), and run Google Ads that produce private-pay enquiries rather than clicks.`
+    `${site.name} is a UK marketing agency working exclusively with care homes, nursing homes and care groups. Led by ${site.founder} from ${site.city}, ${site.country}. ${site.parent.blurb} We do two things: make a care home the provider AI assistants and Google name when a family asks for care in that area, and run Google Ads that produce private-pay enquiries rather than clicks.`
   );
   lines.push("");
   lines.push("## Who we work with");

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   keywords: [
     "care home marketing",
     "care home AI search",
-    "AEO for care homes",
+    "answer engine optimisation for care homes",
     "AI visibility care homes",
     "private pay care home enquiries",
     "care home occupancy marketing",
