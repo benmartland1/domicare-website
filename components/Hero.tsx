@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/site";
 import { Counter } from "./Counter";
+import { VisibilityCheckForm } from "./VisibilityCheckForm";
 import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
 import { AISearchDemo } from "./verticals/AISearchDemo";
 
@@ -90,18 +91,18 @@ export function Hero() {
             transition={{ delay: 0.75, duration: 0.8 }}
             className="mt-10"
           >
-            <Link
-              href={site.calendly}
-              target="_blank"
-              rel="noopener"
-              className="btn btn-primary justify-center whitespace-nowrap"
-            >
-              See What AI Says About Your Home
-              <span aria-hidden>→</span>
-            </Link>
-            <p className="mt-4 max-w-xl text-sm text-[color:var(--color-slate-2)]">
-              Book a free 30-minute call. Before it, we&apos;ll ask ChatGPT, Gemini and
-              Perplexity for care in your area and bring you what they actually said about you.
+            <VisibilityCheckForm />
+            <p className="mt-4 text-sm text-[color:var(--color-slate-2)]">
+              Prefer to talk first?{" "}
+              <Link
+                href={site.calendly}
+                target="_blank"
+                rel="noopener"
+                className="text-[color:var(--color-sky)] underline-offset-4 hover:underline"
+              >
+                Book a call
+              </Link>
+              .
             </p>
           </motion.div>
 
