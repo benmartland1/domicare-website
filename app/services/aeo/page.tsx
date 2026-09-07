@@ -99,9 +99,10 @@ const whatWeDo = [
  * LEGAL: the engines we actually track and report on. This is a service
  * specification the client can hold us to, so it must match what the monthly
  * report contains — not every assistant that exists. It previously listed six
- * (adding Claude, Copilot and Google AI Overviews) while the pricing table
- * promised three, which meant the site sold two different services depending
- * on which page you landed on. Confirmed as three. If a fourth is ever added,
+ * while the pricing table promised three, which meant the site sold two
+ * different services depending on which page you landed on. Confirmed as three,
+ * and no engine outside this list is named anywhere on the site — not in copy,
+ * not in blog posts, not as a prompt label. If a fourth is ever added,
  * update the pricing table, the coverage counter below, the FAQ answer, the
  * service JSON-LD, ProcessSteps and llms.txt in the same commit.
  */
@@ -264,7 +265,7 @@ export default function AEOPage() {
             <span className="eyebrow">Why this is happening now</span>
           </div>
         </ScrollReveal>
-        <div className="mt-10 grid gap-4 border-t border-[color:var(--color-line)] pt-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 border-t border-[color:var(--color-line)] pt-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* CONFIRM BEFORE LAUNCH: CAP Code 3.7 requires us to hold documentary
               evidence for these before publication, and to be able to produce it
               on request. Save the two third-party studies (Digital Bloom 2025,
@@ -278,13 +279,6 @@ export default function AEOPage() {
               suffix: "%+",
               label: "Of searches now end without a click",
               source: "Digital Bloom, 2025",
-            },
-            {
-              value: 61,
-              prefix: "−",
-              suffix: "%",
-              label: "Organic click-through where an AI Overview appears",
-              source: "Dataslayer, 2026",
             },
             {
               value: 60,
