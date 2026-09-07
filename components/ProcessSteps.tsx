@@ -5,7 +5,8 @@ const steps = [
   {
     n: "01",
     title: "Ask",
-    body: "We ask ChatGPT, Gemini, Perplexity and Copilot the questions a family in your catchment actually asks, and record what comes back. Usually it names three homes. Usually one of them is yours by accident, or none of them are.",
+    // LEGAL: keep this list in step with `engines` in app/services/aeo/page.tsx.
+    body: "We ask ChatGPT, Gemini and Perplexity the questions a family in your catchment actually asks, and record what comes back. Usually it names three homes. Usually one of them is yours by accident, or none of them are.",
   },
   {
     n: "02",

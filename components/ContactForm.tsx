@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/lib/site";
 
@@ -78,8 +79,18 @@ export function ContactForm() {
       <Field name="message" label="Which towns do you serve, and what are you registered for?" textarea required />
 
       <div className="flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+        {/* LEGAL: this said "We'll only use your details to reply. No list, no
+            spam." — which contradicted the privacy policy, where we reserve the
+            soft opt-in to market to past enquirers. A promise made at the point
+            of collection is the one that binds us, so either the promise or the
+            practice had to change. This wording matches the policy. */}
         <p className="text-xs text-[color:var(--color-slate-2)]">
-          We'll only use your details to reply. No list, no spam.
+          We use your details to reply to you, and we may occasionally email you about our
+          services — unsubscribe in one click, any time. See our{" "}
+          <Link href="/privacy" className="underline underline-offset-2 hover:text-[color:var(--color-sky)]">
+            privacy policy
+          </Link>
+          .
         </p>
         <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send message"}

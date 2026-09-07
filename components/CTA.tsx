@@ -3,8 +3,12 @@ import { site } from "@/lib/site";
 import { ScrollReveal } from "./ScrollReveal";
 
 export function CTA({
-  heading = "Ready to be the brand AI recommends?",
-  sub = "Book a free 30-minute audit with Ben. We'll show you exactly where your brand is winning - and where it's invisible.",
+  // These defaults are unused today (every caller passes its own copy) but they
+  // were leftover DomiSearch wording offering a "free 30-minute audit", where
+  // the rest of this site offers a free 30-minute call. Kept aligned so an
+  // accidental default render does not promise a different thing.
+  heading = "Ready to be the care home AI recommends?",
+  sub = "Book a free 30-minute call with Ben. We'll show you where your home already shows up in AI answers - and where it does not.",
 }: { heading?: string; sub?: string } = {}) {
   return (
     <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">

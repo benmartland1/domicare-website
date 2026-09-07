@@ -48,7 +48,8 @@ const aboutGraph = {
         addressCountry: "GB",
       },
       description:
-        "Ben Martland founded DomiSearch in 2023 and launched DomiCare, its care-sector practice, in 2026. Five years managing Google Ads with over £3M in personally managed spend, Google Partner certified, and two years working on AI search visibility.",
+        // LEGAL: no duration claim about AI search experience — see lib/authors.ts.
+        "Ben Martland founded DomiSearch in 2023 and launched DomiCare, its care-sector practice, in 2026. Five years managing Google Ads with over £3M in personally managed spend, through DomiSearch, a Google Partner agency.",
     },
     {
       "@type": "AboutPage",
@@ -203,10 +204,12 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal delay={140}>
               <p className="mt-6 max-w-xl text-[color:var(--color-slate)]">
+                {/* LEGAL: dropped "Since 2024 he has worked almost entirely on AI
+                    search visibility". No duration claim — see lib/authors.ts. */}
                 Ben founded DomiSearch in 2023 after five years running Google Ads in-house and
-                agency-side, with over £3M in personally managed spend and Google Partner
-                certification. Since 2024 he has worked almost entirely on AI search visibility
-                — the question of what assistants say about a business, and why.
+                agency-side, with over £3M in personally managed spend. His work now centres on
+                AI search visibility — the question of what assistants say about a business,
+                and why.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
@@ -237,23 +240,31 @@ export default function AboutPage() {
             <div className="eyebrow">Where we stand today</div>
             <p className="mt-6 max-w-3xl text-[color:var(--color-slate)]">
               DomiCare launched in 2026. We are not going to pretend to a decade of care-sector
-              case studies we do not have. What we do have is a team that has been doing this
-              work in other sectors for years, and a service designed specifically around how
-              care is actually bought.
+              case studies we do not have. What we do have is years of doing this work in other
+              sectors, and a service designed specifically around how care is actually bought.
             </p>
             <ul className="mt-8 grid gap-5 text-[color:var(--color-slate)] sm:grid-cols-2">
+              {/* LEGAL: this bullet said "Google Partner. Certified, with £3M+
+                  managed spend behind the team." Partner status is confirmed and
+                  stays, but it is DomiSearch's and is not a "certification" —
+                  see lib/site.ts. "Behind the team" also overstated the size of
+                  the business, so the spend is stated plainly. */}
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-sky)]" />
                 <span>
                   <strong className="text-[color:var(--color-navy)]">Google Partner.</strong>{" "}
-                  Certified, with £3M+ managed spend behind the team.
+                  Through DomiSearch, with £3M+ in managed ad spend across five years.
                 </span>
               </li>
+              {/* LEGAL: this bullet claimed "Two years on AI search. Working on
+                  assistant visibility since before it had a settled name."
+                  Removed — no duration claim, see lib/authors.ts. Replaced with
+                  the scope of the work, which is checkable from the site itself. */}
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-sky)]" />
                 <span>
-                  <strong className="text-[color:var(--color-navy)]">Two years on AI search.</strong>{" "}
-                  Working on assistant visibility since before it had a settled name.
+                  <strong className="text-[color:var(--color-navy)]">AI search, specifically.</strong>{" "}
+                  Assistant visibility is the work, not a bolt-on to an SEO retainer.
                 </span>
               </li>
               <li className="flex gap-3">

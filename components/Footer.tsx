@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { Wordmark } from "./brand/Wordmark";
+import { CookieSettingsButton } from "./CookieConsent";
 import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
+import { Wordmark } from "./brand/Wordmark";
 
 /**
  * The footer is the site's largest navy band — the page runs pale all the way
@@ -53,6 +54,9 @@ export function Footer() {
             <li><Link href="/contact" className="hover:text-[color:var(--color-sky)]">Contact</Link></li>
             <li><Link href="/privacy" className="hover:text-[color:var(--color-sky)]">Privacy</Link></li>
             <li><Link href="/terms" className="hover:text-[color:var(--color-sky)]">Terms</Link></li>
+            {/* LEGAL: withdrawing consent must be as easy as giving it (UK GDPR
+                Art 7(3)). This is that route — do not remove it. */}
+            <li><CookieSettingsButton className="hover:text-[color:var(--color-sky)]" /></li>
           </ul>
         </div>
 

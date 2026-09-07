@@ -3,13 +3,32 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 
 /**
- * A 3D-tilt "Certified Google Partner" badge.
- * Adapted from a Product Hunt-style animated badge - identical tilt/overlay
- * physics, Google Partner branding and Google colour palette.
+ * A 3D-tilt Google Partner badge.
+ *
+ * LEGAL — READ BEFORE EDITING. Partner status is confirmed as held, so this
+ * badge stands. Two things about it were wrong independently of whether the
+ * status is held, and have been corrected — do not undo either:
+ *
+ *   1. It read "CERTIFIED / Google Partner". Google does not issue a "Certified
+ *      Google Partner" tier. The agency tiers are "Google Partner" and "Premier
+ *      Partner"; "certified" refers to individuals passing Google Ads exams.
+ *      Publishing a tier that does not exist is a false claim even when the
+ *      real status is held, so the eyebrow now names the holder instead.
+ *   2. It was attributed to DomiCare, which is not enrolled in the programme.
+ *      The status is DomiSearch's, and the badge now says so.
+ *
+ * STILL OUTSTANDING (see the report): this is a hand-drawn reconstruction of
+ * Google's four-colour mark and wordmark rather than the badge Google issues.
+ * Google's brand guidelines require partners to use the badge generated for
+ * them, which carries their own ID and links to their listing. Replace this SVG
+ * with that asset, and point `link` at the DomiSearch Partner listing rather
+ * than the generic directory, when you next touch this file.
  */
 
 type Props = {
-  /** External link - defaults to Google's Partner directory */
+  /** External link - defaults to Google's Partner directory.
+   *  TODO: point this at DomiSearch's own Partner listing. A generic directory
+   *  link does not let a reader verify the claim. */
   link?: string;
   className?: string;
 };
@@ -231,7 +250,7 @@ export function GooglePartnerBadge({ link, className }: Props) {
       href={link ?? "https://www.google.com/partners/agency"}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="DomiCare - Certified Google Partner"
+      aria-label="DomiSearch, a Google Partner agency — DomiCare is its care-sector practice"
       className={`block h-auto w-[220px] cursor-pointer sm:w-[260px] ${className ?? ""}`}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
@@ -278,7 +297,9 @@ export function GooglePartnerBadge({ link, className }: Props) {
             strokeWidth="1"
           />
 
-          {/* CERTIFIED label */}
+          {/* Holder label. LEGAL: this slot said "CERTIFIED", a Google tier
+              that does not exist. It names the holder instead — the status is
+              DomiSearch's, not DomiCare's. Do not put "CERTIFIED" back. */}
           <text
             fontFamily="Helvetica-Bold, Helvetica, system-ui, sans-serif"
             fontSize="9"
@@ -288,7 +309,7 @@ export function GooglePartnerBadge({ link, className }: Props) {
             x="56"
             y="20"
           >
-            CERTIFIED
+            DOMISEARCH
           </text>
 
           {/* Google Partner main title */}

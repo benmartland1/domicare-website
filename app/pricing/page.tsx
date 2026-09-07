@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "What is not included?",
     answer:
-      "Ad spend, which you pay Google directly. Directory listing fees such as carehome.co.uk, which stay in your name. Photography and video, though we will tell you what you need. And any tools you already pay for.",
+      "Ad spend, which you pay Google directly. Directory listing fees such as carehome.co.uk, which stay in your name. Photography and video, though we will tell you what you need. And any tools you already pay for. There is no VAT to add to our fees — the figure you see is the figure you pay.",
   },
   {
     question: "Do you take a percentage of ad spend?",
@@ -49,7 +49,9 @@ const faqs = [
   {
     question: "Can we talk before committing?",
     answer:
-      "Yes, and most operators do. Book a 30-minute call with Ben. We run the AI visibility check on your home beforehand, so the call starts with what the assistants actually said rather than a slide deck.",
+      // LEGAL: opened "Yes, and most operators do" — an invented popularity
+      // claim. There is no client base behind it yet.
+      "Yes. Book a 30-minute call with Ben. We run the AI visibility check on your home beforehand, so the call starts with what the assistants actually said rather than a slide deck.",
   },
 ];
 
@@ -113,6 +115,12 @@ export default function PricingPage() {
         <ScrollReveal>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-slate-2)]">
             <span>3-month minimum</span>
+            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-slate)]/30 sm:block" />
+            {/* LEGAL: the headline price must not hide an unavoidable charge.
+                We are not VAT-registered, so no VAT is added — say so rather
+                than leaving a buyer to assume "+VAT". See the note in
+                components/PricingTable.tsx if that ever changes. */}
+            <span>No VAT to add</span>
             <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-slate)]/30 sm:block" />
             <span>No setup fees</span>
             <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-slate)]/30 sm:block" />

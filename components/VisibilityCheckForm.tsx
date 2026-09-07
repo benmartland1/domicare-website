@@ -196,6 +196,17 @@ export function VisibilityCheckForm() {
                   <span className="font-semibold text-[color:var(--color-ink)]">{url}</span> the way a
                   family would. Add your details and we&apos;ll send the answers over.
                 </p>
+                {/* LEGAL: UK GDPR Art 13 — tell people what happens to their
+                    data at the point they hand it over, not only on a page they
+                    would have to go looking for. */}
+                <p className="mt-3 text-xs leading-relaxed text-[color:var(--color-ink-3)]">
+                  We use your details to send you the check and to follow up about it. We will
+                  not pass them to anyone else. See our{" "}
+                  <a href="/privacy" className="underline underline-offset-2">
+                    privacy policy
+                  </a>
+                  .
+                </p>
 
                 <form onSubmit={submitLead} className="mt-6 space-y-3">
                   <div>

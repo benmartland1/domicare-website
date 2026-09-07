@@ -23,7 +23,24 @@ type Tier = {
 };
 
 /**
- * PROVISIONAL PRICING — confirm before launch.
+ * PROVISIONAL PRICING — CONFIRM BEFORE LAUNCH. These figures are published on
+ * the homepage, the pricing page, the FAQ and in Offer/priceSpecification JSON-LD,
+ * so a wrong number here is a wrong number in structured data that AI assistants
+ * will quote back at prospects.
+ *
+ * LEGAL — VAT. Confirmed: we do not charge VAT, so the figure shown is the
+ * figure the client pays. That is stated on the page rather than left to
+ * inference — a business buyer reading "£950 / month" will otherwise assume
+ * "+ VAT" is coming, and an unavoidable charge revealed later than the headline
+ * price is a misleading omission.
+ *
+ * REVIEW IF TURNOVER RISES. VAT registration is compulsory once taxable turnover
+ * passes £90,000 in any rolling 12 months. On the day that happens the "no VAT"
+ * line becomes false and every price on this site needs "+ VAT" against it. This
+ * is not a set-and-forget note.
+ *
+ * Engine coverage is confirmed at three (ChatGPT, Gemini, Perplexity) and now
+ * matches /services/aeo. Keep the two in step.
  *
  * These rates are set below the DomiCare parent rates on purpose: a single
  * independent home cannot carry a £2,950 retainer, but a group can. If the
@@ -44,12 +61,19 @@ const tiers: Tier[] = [
       "CQC, carehome.co.uk and Google Business Profile alignment",
       "Your site rebuilt so AI assistants and Google can read and quote it",
       "Two AI-citable pages a month",
+      // LEGAL: three engines, confirmed, and now matching /services/aeo. Keep
+      // the two in step — this is what the client is buying.
       "Monthly report of what ChatGPT, Gemini and Perplexity say about you",
     ],
     cta: { label: "Book a call", href: site.calendly, external: true },
   },
   {
-    badge: "Most operators start here",
+    // LEGAL: was "Most operators start here". DomiCare launched in 2026 and
+    // has no care-sector client base to draw that from — it is a fabricated
+    // popularity claim (DMCCA 2024 / CAP 3.7). This label describes the tier,
+    // not what other buyers have done. Do not replace it with a volume or
+    // popularity claim unless we can evidence one.
+    badge: "Both channels, one price",
     name: "Occupancy programme",
     tagline: "Organic and paid search, one strategy. Up to three homes.",
     price: 2450,
@@ -74,7 +98,9 @@ const tiers: Tier[] = [
     tagline: "One home. Google Ads for the families ready to enquire this week.",
     price: 1500,
     features: [
-      "Account build or rebuild, run by a Google Partner",
+      // LEGAL: Partner status is DomiSearch's — see lib/site.ts. Never
+      // "certified", and never attributed to DomiCare itself.
+      "Account build or rebuild, run by a Google Partner agency",
       "Private-pay intent prioritised over LA-funded searches",
       "Landing pages built to take an enquiry, not a click",
       "Monthly performance report and strategy call",

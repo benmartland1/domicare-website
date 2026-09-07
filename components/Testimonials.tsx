@@ -20,13 +20,30 @@ type Testimonial = {
 };
 
 /**
- * DomiCare is new; DomiSearch is not. These are verbatim quotes from DomiSearch
- * clients, and the section says so plainly rather than implying they are care
- * homes. Replace with care-sector quotes as soon as we have them.
+ * LEGAL — VERBATIM. DO NOT PARAPHRASE, TIDY, SHORTEN OR "IMPROVE" THESE QUOTES.
  *
- * Tom Lynch's quote is from Trustpilot and predates the rebrand — it says "BMAR
- * Digital" in the original. Renamed to DomiSearch so it matches the company the
- * reader can actually go and look up.
+ * Every quote below is the real, permissioned words of a real, named client.
+ * Under the Digital Markets, Competition and Consumers Act 2024 a fabricated or
+ * materially altered endorsement is a banned practice outright — not a matter of
+ * degree — so the only safe rule is that the text here matches what the person
+ * actually wrote. Typos and all. If a quote needs to change, get the client to
+ * re-issue it; do not edit it here.
+ *
+ * Adding one? It needs: a real named person, at a real named company, who has
+ * given permission for their words and their name to be used this way, and a
+ * record of that permission kept somewhere findable. No composites, no
+ * "representative" quotes, no quotes written for a client to approve.
+ *
+ * DomiCare is new; DomiSearch is not. These are DomiSearch clients from other
+ * sectors, and the section heading says so plainly rather than letting a reader
+ * assume they are care homes. Replace with care-sector quotes once we have them
+ * — and only once we have them.
+ *
+ * Tom Lynch's quote is from Trustpilot and predates the rebrand: he wrote "BMAR
+ * Digital". The substitution is now marked with square brackets, which is the
+ * standard convention for an editorial change inside a quotation. Silently
+ * swapping the name made the displayed text differ from the published review
+ * a reader could go and check.
  *
  * Count matters: the featured card takes one, the rest sit in a two-column grid.
  * Keep this list at an odd length so the grid never leaves a hanging single.
@@ -73,7 +90,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Ben @ DomiSearch has helped my agency thrive via his work with Paid Google Search Ads bringing me in more and more high quality leads month on month. Continuing to work with DomiSearch really is a no brainer.",
+      "Ben @ [DomiSearch] has helped my agency thrive via his work with Paid Google Search Ads bringing me in more and more high quality leads month on month. Continuing to work with [DomiSearch] really is a no brainer.",
     name: "Tom Lynch",
     role: "Founder",
     company: "Social Attom",
@@ -157,7 +174,11 @@ export function Testimonials({ showBookCall = false }: TestimonialsProps = {}) {
       <SectionHeader
         eyebrow="Track record"
         title="New brand. Not a new team."
-        description="DomiCare launched in 2026. The people running it have been doing this for years at DomiSearch — these are their clients, in their words. Care-sector results will be published here as they land."
+        // LEGAL: this description is load-bearing. It is what stops five quotes
+        // from tax software, saunas and a marketing agency being read as care
+        // home references. Do not shorten it into something that drops the
+        // "not care homes" disclosure.
+        description="DomiCare launched in 2026 and does not yet have care-sector results to show. These are verbatim reviews from DomiSearch clients in other sectors, published with their permission. Care-sector results will appear here when there are some."
       />
 
       {/* Featured testimonial */}

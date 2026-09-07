@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutChrome } from "@/components/LayoutChrome";
 import { MetaPixel } from "@/components/MetaPixel";
+import { CookieConsent } from "@/components/CookieConsent";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -79,6 +80,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LayoutChrome header={<Header />} footer={<Footer />}>
           {children}
         </LayoutChrome>
+        {/* LEGAL: the consent banner gates the Meta pixel (PECR reg 6).
+            Vercel Analytics and Speed Insights are cookieless and stay outside
+            the gate; if either is ever configured to set an identifier, or any
+            other tag is added, it must move behind consent too. */}
+        <CookieConsent />
         <Analytics />
         <SpeedInsights />
       </body>

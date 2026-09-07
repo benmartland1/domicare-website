@@ -25,6 +25,14 @@ export const organizationSchema = {
   founder: { "@type": "Person", name: site.founder },
 };
 
+/**
+ * NOT CURRENTLY RENDERED anywhere — check before you wire it into a page. Its
+ * `makesOffer` list includes "Care group multi-home visibility programme" and
+ * "Enquiry landing page CRO", neither of which is a published service, and
+ * `priceRange: "££"` conflicts with the exact prices published on /pricing.
+ * Structured data is a published claim like any other; fix this list before it
+ * ships, or delete the export.
+ */
 export const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",

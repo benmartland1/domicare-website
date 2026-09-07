@@ -17,7 +17,9 @@ import { useEffect, useState } from "react";
  */
 export type TickerPrompt = { q: string; engine: string };
 
-/* Defaults are the care-sector copy. Other pages pass their own. */
+/* Defaults are the care-sector copy. Other pages pass their own.
+   LEGAL: label prompts only with engines we track — ChatGPT, Gemini,
+   Perplexity. See `engines` in app/services/aeo/page.tsx. */
 const DEFAULT_PROMPTS: TickerPrompt[] = [
   { q: "best dementia care home near Preston", engine: "ChatGPT" },
   { q: "how much does a nursing home cost per week UK", engine: "Gemini" },

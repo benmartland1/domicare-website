@@ -34,7 +34,7 @@ export function GET() {
   lines.push("");
   lines.push("## Services");
   lines.push(
-    `- [AI Search Visibility for care homes](${site.url}/services/aeo): Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly tracking of what ChatGPT, Gemini, Perplexity, Copilot and Google AI Overviews say when families ask about care in your towns.`
+    `- [AI Search Visibility for care homes](${site.url}/services/aeo): Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly tracking of what ChatGPT, Gemini and Perplexity say when families ask about care in your towns.`
   );
   lines.push(
     `- [Google Ads for care homes](${site.url}/services/google-ads): Location and specialism campaigns built around real enquiry intent, measured on enquiries and admissions rather than clicks.`

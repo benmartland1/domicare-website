@@ -14,7 +14,13 @@ export const authors: Record<string, Author> = {
     name: "Ben Martland",
     role: "Founder, DomiCare",
     image: "/brand/founder.png",
-    bio: "Ben founded DomiSearch in 2023 and launched DomiCare, its care-sector practice, in 2026. Five years running Google Ads with over £3M in personally managed spend, Google Partner certified, and two years working on how AI assistants decide which businesses to name. Every client account is reviewed by him personally.",
+    // LEGAL: "Google Partner" is DomiSearch's, never DomiCare's, and is never
+    // written as "certified" — see the note on site.parent in lib/site.ts.
+    // LEGAL: no claims about how long Ben has worked on AI search. The site
+    // previously said both "two years" and "since 2024", which cannot both be
+    // true, and neither is evidenced. Describe what DomiCare does, not how long
+    // he has been doing it. Do not reintroduce a duration here.
+    bio: "Ben founded DomiSearch in 2023 and launched DomiCare, its care-sector practice, in 2026. Five years running Google Ads with over £3M in personally managed spend, through DomiSearch, a Google Partner agency. Every client account is reviewed by him personally.",
     url: `${site.url}/about`,
     sameAs: [site.social.linkedin],
   },

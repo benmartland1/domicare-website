@@ -17,7 +17,9 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "AI Search Visibility for Care Homes | DomiCare",
   description:
-    "Families ask ChatGPT which care home to consider before they ring anyone. DomiCare makes your home the one AI names — and runs the Google Ads that fill the beds families are searching for today.",
+    // LEGAL: was "makes your home the one AI names" / "fill the beds" — both
+    // promised outcomes. Effort, not guarantee.
+    "Families ask ChatGPT which care home to consider before they ring anyone. DomiCare works to get your home named in those answers — and runs the Google Ads aimed at the families searching today.",
   alternates: { canonical: "/" },
 };
 
@@ -25,12 +27,12 @@ const homeFaqs = [
   {
     question: "How do families use AI to choose a care home?",
     answer:
-      "They ask an assistant like ChatGPT, Gemini or Copilot a plain question — 'best dementia care home near Preston', 'how much does a nursing home cost in Kent', 'is this home any good'. The assistant answers by reading CQC records, carehome.co.uk listings and reviews, Google Business Profile and the home's own website, then names two or three homes. That shortlist is now often written before a family speaks to anybody.",
+      "They ask an assistant like ChatGPT, Gemini or Perplexity a plain question — 'best dementia care home near Preston', 'how much does a nursing home cost in Kent', 'is this home any good'. The assistant answers by reading CQC records, carehome.co.uk listings and reviews, Google Business Profile and the home's own website, then names two or three homes. That shortlist is now often written before a family speaks to anybody.",
   },
   {
     question: "What is AEO, and why does it matter for a care home?",
     answer:
-      "AEO — Answer Engine Optimisation — is the work of making sure AI assistants can read, trust and quote your home when they answer a family's question. For a care home it mostly means three things: your CQC record, your carehome.co.uk listing, your Google profile and your website all say the same thing about who you are and what you do; your specialisms are stated explicitly rather than implied; and the questions families ask are answered somewhere a machine can find them.",
+      "AEO — Answer Engine Optimisation — is the work of making it as easy as possible for AI assistants to read, trust and quote your home when they answer a family's question. For a care home it mostly means three things: your CQC record, your carehome.co.uk listing, your Google profile and your website all say the same thing about who you are and what you do; your specialisms are stated explicitly rather than implied; and the questions families ask are answered somewhere a machine can find them.",
   },
   {
     question: "What does DomiCare actually do?",
@@ -64,14 +66,20 @@ const homeFaqs = [
   },
 ];
 
-/** Real questions families type, used for the ticker and for the FAQ framing. */
+/**
+ * Real questions families type, used for the ticker and for the FAQ framing.
+ *
+ * LEGAL: only label these with engines we actually track (ChatGPT, Gemini,
+ * Perplexity — see `engines` in app/services/aeo/page.tsx). Tagging a prompt
+ * with an engine we do not report on implies coverage the client is not buying.
+ */
 const FAMILY_PROMPTS = [
   { q: "best dementia care home near Preston", engine: "ChatGPT" as const },
   { q: "how much does a nursing home cost per week UK", engine: "Gemini" as const },
   { q: "care homes in Harrogate with good CQC ratings", engine: "ChatGPT" as const },
   { q: "residential vs nursing home — which does mum need", engine: "Perplexity" as const },
   { q: "care home that takes respite for two weeks near me", engine: "ChatGPT" as const },
-  { q: "what questions should I ask when visiting a care home", engine: "Copilot" as const },
+  { q: "what questions should I ask when visiting a care home", engine: "Perplexity" as const },
 ];
 
 function stripContext<T extends { "@context"?: unknown }>(obj: T) {
@@ -221,8 +229,10 @@ const homeGraph = {
       "@id": `${site.url}/#webpage`,
       url: site.url,
       name: "AI Search Visibility for Care Homes | DomiCare",
+      // LEGAL: structured data is published copy. Mirrors the softened page
+      // metadata above — do not let this drift back to "makes your home the one".
       description:
-        "DomiCare makes your care home the one AI assistants name when a family asks where to place their mum or dad.",
+        "DomiCare works to get your care home named by AI assistants when a family asks where to place their mum or dad.",
       isPartOf: { "@id": `${site.url}/#website` },
       about: { "@id": `${site.url}/#organization` },
       primaryImageOfPage: {

@@ -18,7 +18,8 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "AI Search Visibility for Care Homes",
   description:
-    "Families ask ChatGPT, Gemini and Copilot which care home to consider. We make your home the one they name — by fixing your CQC, carehome.co.uk and Google records, and publishing what families actually search for.",
+    // LEGAL: hedge the outcome, not the confidence. See components/Hero.tsx.
+    "Families ask ChatGPT, Gemini and Perplexity which care home to consider. We work to get your home named in those answers — by fixing your CQC, carehome.co.uk and Google records, and publishing what families actually search for.",
   alternates: { canonical: "/services/aeo" },
   openGraph: {
     title: "AI Search Visibility for Care Homes · DomiCare",
@@ -64,7 +65,9 @@ const whatWeDo = [
     tag: "Specialisms",
     title: "Saying what you actually do",
     body:
-      "\"We provide person-centred care in a homely environment\" tells a machine nothing. Dementia, nursing, residential, respite, palliative, young physical disability, bariatric — if you take it, it needs to be stated in words a model can match to a family's question. This alone moves homes into answers they were never in.",
+      // LEGAL: "This alone moves homes into answers they were never in" was
+      // stated as fact. Softened to what we expect it to do, not what it will.
+      "\"We provide person-centred care in a homely environment\" tells a machine nothing. Dementia, nursing, residential, respite, palliative, young physical disability, bariatric — if you take it, it needs to be stated in words a model can match to a family's question. It is usually the cheapest fix on the list and often the one with the most left in it.",
   },
   {
     tag: "Technical",
@@ -92,20 +95,30 @@ const whatWeDo = [
   },
 ];
 
+/**
+ * LEGAL: the engines we actually track and report on. This is a service
+ * specification the client can hold us to, so it must match what the monthly
+ * report contains — not every assistant that exists. It previously listed six
+ * (adding Claude, Copilot and Google AI Overviews) while the pricing table
+ * promised three, which meant the site sold two different services depending
+ * on which page you landed on. Confirmed as three. If a fourth is ever added,
+ * update the pricing table, the coverage counter below, the FAQ answer, the
+ * service JSON-LD, ProcessSteps and llms.txt in the same commit.
+ */
 const engines = [
   { name: "ChatGPT", src: "/engines/chatgpt.png" },
   { name: "Gemini", src: "/engines/gemini.png" },
   { name: "Perplexity", src: "/engines/perplexity.png" },
-  { name: "Claude", src: "/engines/claude.png" },
-  { name: "Copilot", src: "/engines/copilot.png" },
-  { name: "Google AI Overviews", src: "/engines/google.png" },
 ];
 
 const faqs = [
   {
     question: "Do families really use ChatGPT to choose a care home?",
     answer:
-      "Enough of them that it changes your enquiry mix, and the number rises every quarter. The people placing a parent are typically 45 to 65, already use assistants at work, and are researching under time pressure — often after a hospital discharge with days rather than months to decide. That is exactly the situation where someone asks a machine to narrow it down rather than reading fourteen websites.",
+      // LEGAL: opened "Enough of them that it changes your enquiry mix, and the
+      // number rises every quarter" — two unevidenced quantitative claims.
+      // Replaced with the reasoning, which stands on its own.
+      "We cannot give you a percentage for the care sector, and nor can anyone else honestly. What we can say is who is doing the searching. The people placing a parent are typically 45 to 65, already use assistants at work, and are researching under time pressure — often after a hospital discharge with days rather than months to decide. That is exactly the situation where someone asks a machine to narrow it down rather than reading fourteen websites.",
   },
   {
     question: "Where do AI assistants get their information about my home?",
@@ -125,12 +138,15 @@ const faqs = [
   {
     question: "How long before we see anything?",
     answer:
-      "Record and schema fixes tend to show up in assistant answers within four to eight weeks, because they are corrections rather than reputation building. Content-driven movement takes three to six months. We report what the assistants say every month from month one, so you can see the direction well before the enquiries change.",
+      // LEGAL: timeframes are outcome claims (CAP 3.7). Kept because they are
+      // stated as typical rather than promised, and explicitly made conditional
+      // — do not tighten them into "will" or drop the dependency clause.
+      "It depends on your category, your competition and how bad the starting record is, so treat these as typical rather than promised. Record and schema fixes tend to show up in assistant answers within roughly four to eight weeks, because they are corrections rather than reputation building. Content-driven movement is slower — think three to six months. We report what the assistants say every month from month one, so you can see the direction well before the enquiries change.",
   },
   {
     question: "How do you measure it?",
     answer:
-      "We track a set of prompts a real family in your catchment would type — by town, by specialism, by funding type — and re-run them monthly across ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews. You get how often you were named, what was said about you, which competitors were named instead, and which sources the assistant cited to get there.",
+      "We track 50 prompts a real family in your catchment would type — by town, by specialism, by funding type — and re-run them monthly across ChatGPT, Gemini and Perplexity. You get how often you were named, what was said about you, which competitors were named instead, and which sources the assistant cited to get there.",
   },
   {
     question: "We are a group with twelve homes. Does this scale?",
@@ -152,7 +168,9 @@ export default function AEOPage() {
           serviceSchema({
             name: "Organic search visibility for care homes",
             description:
-              "Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly reporting on what ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews say about your home.",
+              // LEGAL: structured data is a published service description. Keep
+              // the engine list identical to the `engines` array above.
+              "Entity clarity across CQC, carehome.co.uk and Google Business Profile, schema markup, machine-readable home and specialism pages, and monthly reporting on what ChatGPT, Gemini and Perplexity say about your home.",
             url: `${site.url}/services/aeo`,
             serviceType: "AI search optimisation for care providers",
           }),
@@ -187,7 +205,7 @@ export default function AEOPage() {
         <div className="relative mx-auto grid max-w-7xl gap-14 px-6 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10 lg:pt-24">
           <div>
             <ScrollReveal>
-              <AIEnginesBadge className="w-[229px]! sm:w-[267px]!" />
+              <AIEnginesBadge className="w-[178px]! sm:w-[208px]!" />
             </ScrollReveal>
             <ScrollReveal delay={80}>
               <h1 className="display mt-10 text-balance text-[clamp(2.4rem,5.4vw,4.25rem)]">
@@ -203,8 +221,8 @@ export default function AEOPage() {
                 <strong className="text-[color:var(--color-navy)]">
                   your CQC record, your carehome.co.uk listing, your Google profile
                 </strong>{" "}
-                and your website — and names two or three homes. We make sure one of them is
-                yours.
+                and your website — and names two or three homes. Our job is to give it every
+                reason to name yours.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
@@ -220,7 +238,7 @@ export default function AEOPage() {
             </ScrollReveal>
             <ScrollReveal delay={260}>
               <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[color:var(--color-slate-2)]">
-                Care homes only · UK · Google Partner team
+                Care homes only · UK · Google Partner agency
               </p>
             </ScrollReveal>
           </div>
@@ -247,6 +265,13 @@ export default function AEOPage() {
           </div>
         </ScrollReveal>
         <div className="mt-10 grid gap-4 border-t border-[color:var(--color-line)] pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* CONFIRM BEFORE LAUNCH: CAP Code 3.7 requires us to hold documentary
+              evidence for these before publication, and to be able to produce it
+              on request. Save the two third-party studies (Digital Bloom 2025,
+              Dataslayer 2026) as PDFs somewhere findable, check each one
+              actually says what we have attributed to it, and check neither has
+              been superseded. If a source cannot be produced, the stat comes
+              down — do not re-source it to a blog post citing a blog post. */}
           {[
             {
               value: 60,
@@ -268,6 +293,12 @@ export default function AEOPage() {
               label: "Annual value of one private resident",
               source: "Typical UK private fee",
             },
+            // LEGAL: our own observation, not published research, and the source
+            // line says so. Ben has confirmed we are not retaining the prompt
+            // logs, so there is no record to produce if this is ever challenged
+            // — under CAP 3.7 that makes it the weakest claim on the page. If a
+            // challenge comes and nothing can be produced, this stat comes down.
+            // Note the other three stats on this row do have named sources.
             {
               value: 3,
               label: "Homes named in a typical assistant answer",
@@ -330,7 +361,7 @@ export default function AEOPage() {
       <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
         <SectionHeader
           eyebrow="Coverage"
-          title="Six engines, tracked monthly."
+          title="Three engines, tracked monthly."
           description="We ask each of these the questions a family in your catchment would ask, record what comes back, and show you the answer verbatim — including which competitor was named instead of you."
         />
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -353,9 +384,16 @@ export default function AEOPage() {
         </div>
         <ScrollReveal delay={260}>
           <div className="mt-10 grid gap-4 sm:grid-cols-4">
+            {/* LEGAL: every number here is a service specification a client can
+                hold us to. Prompts (50) and engines (3) are confirmed and match
+                the pricing table. STILL UNCONFIRMED: "20+ re-runs per prompt"
+                and "3 local competitors" — check both against what the monthly
+                report actually contains, and change them here if they are wrong.
+                Anything published here has to be deliverable on every account,
+                not just a good month. */}
             {[
-              { label: "Prompts tracked / month", value: "60–120" },
-              { label: "Engines covered", value: "6" },
+              { label: "Prompts tracked / month", value: "50" },
+              { label: "Engines covered", value: "3" },
               { label: "Re-runs per prompt", value: "20+" },
               { label: "Competitors benchmarked", value: "3 local" },
             ].map((m) => (

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { SectionHeader } from "./SectionHeader";
-import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
 import { AIEnginesBadge } from "./ui/AIEnginesBadge";
+import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
 
 const services = [
   {
@@ -14,9 +14,14 @@ const services = [
     outcome:
       "Get found when families search — on Google and in AI answers — without paying for every click.",
     body:
-      "Families ask ChatGPT, Gemini and Perplexity which home to consider before they ring anyone. We make yours the one they name — and the same work lifts you in normal Google search too. Most agencies do one or the other. We do both, from the same foundation.",
+      // LEGAL: "We make yours the one they name" was a guarantee, and "Most
+      // agencies do one or the other" is a comparative claim about competitors
+      // we hold no evidence for (CAP 3.7 / 3.33). Both recast.
+      "Families ask ChatGPT, Gemini and Perplexity which home to consider before they ring anyone. We work to get yours named in those answers — and the same work lifts you in normal Google search too. Both, from the same foundation, rather than one or the other.",
     bullets: [
-      "Named and quoted by ChatGPT, Gemini and Perplexity",
+      // LEGAL: was "Named and quoted by ChatGPT, Gemini and Perplexity" — read
+      // as a promised deliverable. This is the work, not the guaranteed result.
+      "Built to be quotable by ChatGPT, Gemini and Perplexity",
       "One story across CQC, carehome.co.uk and Google",
       "A page per home, per specialism, per town",
       "The cost and funding questions families ask, answered",
@@ -66,14 +71,16 @@ function ServiceCard({
         onMouseMove={onMouseMove}
         className="card spotlight group relative flex h-full flex-col overflow-hidden p-10"
       >
-        {/* Badge sits where the eyebrow tag used to live */}
+        {/* Badge sits where the eyebrow tag used to live.
+            Widths are set so both badges render at the same height: Google is
+            260x54, AI Engines is now 252x54 (three chips), target 40px / 44px.
+            LEGAL: the Google badge asserts DomiSearch's Partner status — see
+            lib/site.ts before changing anything about it. */}
         <div className="pointer-events-none">
-          {/* Widths are set so both badges render at the same height:
-              Google is 260x54, AI Engines is 324x54, target height 40px / 44px. */}
           {service.badge === "google" ? (
             <GooglePartnerBadge className="w-[193px]! sm:w-[212px]!" />
           ) : (
-            <AIEnginesBadge className="w-[240px]! sm:w-[264px]!" />
+            <AIEnginesBadge className="w-[187px]! sm:w-[205px]!" />
           )}
         </div>
 

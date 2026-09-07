@@ -16,7 +16,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Google Ads for Care Homes",
   description:
-    "Google Ads built per home, per town and per specialism — aimed at private-pay enquiries and measured on admissions, not clicks. Run by a Google Partner team.",
+    "Google Ads built per home, per town and per specialism — aimed at private-pay enquiries and measured on admissions, not clicks. Run by a Google Partner agency.",
   alternates: { canonical: "/services/google-ads" },
   openGraph: {
     title: "Google Ads for Care Homes · DomiCare",
@@ -77,7 +77,7 @@ const faqs = [
   {
     question: "We tried Google Ads before and got nothing but job applicants.",
     answer:
-      "That is the most common way care home campaigns fail, and it is structural rather than bad luck. \"Care home jobs\", \"care assistant\", \"carer vacancies\" and dozens of variants share vocabulary with family searches, and a broad-match campaign with no negative list will burn most of its budget on them. Fixing it is unglamorous, mechanical and usually the biggest single improvement in the first month.",
+      "That is the most common way care home campaigns fail, and it is structural rather than bad luck. \"Care home jobs\", \"care assistant\", \"carer vacancies\" and dozens of variants share vocabulary with family searches, and a broad-match campaign with no negative list can burn a large share of its budget on them. Fixing it is unglamorous, mechanical and usually the biggest single improvement in the first month.",
   },
   {
     question: "Do you need access to our existing account?",
@@ -156,7 +156,8 @@ export default function GoogleAdsPage() {
           <ScrollReveal delay={260}>
             <div className="mt-16 grid max-w-3xl gap-4 border-t border-[color:var(--color-line)] pt-10 sm:grid-cols-3">
               {[
-                { value: 3, prefix: "£", suffix: "M+", label: "Ad spend managed by our team" },
+                // LEGAL: "by our team" — see the note in components/Hero.tsx.
+                { value: 3, prefix: "£", suffix: "M+", label: "Ad spend managed to date" },
                 { value: 5, suffix: " yrs", label: "Running Google Ads accounts" },
                 { value: 60, prefix: "£", suffix: "k+", label: "Value of one private resident" },
               ].map((s, i) => (
@@ -244,7 +245,10 @@ export default function GoogleAdsPage() {
       <FAQ items={faqs} heading="Google Ads, answered plainly." />
       <CTA
         heading="Get a second opinion on your account."
-        sub="Send us read access and we'll tell you what we'd change, whether or not you hire us. Most care home accounts have one structural problem worth more than everything else combined — usually job-seeker traffic."
+        // LEGAL: "Most care home accounts have one structural problem..." was a
+        // statistical claim about the sector we hold no study for. Recast as
+        // what we look for first.
+        sub="Send us read access and we'll tell you what we'd change, whether or not you hire us. The first thing we look for is job-seeker traffic, which in our experience is where a care home account most often leaks its budget."
       />
     </>
   );

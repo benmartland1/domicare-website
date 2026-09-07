@@ -4,8 +4,8 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/site";
 import { Counter } from "./Counter";
-import { VisibilityCheckForm } from "./VisibilityCheckForm";
 import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
+import { VisibilityCheckForm } from "./VisibilityCheckForm";
 import { AISearchDemo } from "./verticals/AISearchDemo";
 
 /**
@@ -78,11 +78,14 @@ export function Hero() {
             transition={{ delay: 0.55, duration: 0.8 }}
             className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-[color:var(--color-slate)] sm:text-lg"
           >
+            {/* LEGAL: "We make sure the home it names is yours" was a guarantee.
+                Whether an assistant names a given home depends on the home's
+                category, competition and existing public record — none of which
+                we control. Keep this as work-we-do, not result-you-get. */}
             Families do not start with a phone call any more. They ask ChatGPT which home to
-            look at, and they arrive at your door already decided. We make sure the home it
-            names is{" "}
-            <span className="text-[color:var(--color-navy)]">yours</span> — and run the
-            Google Ads that catch the families still searching the old way.
+            look at, and they arrive at your door already decided. We work to get{" "}
+            <span className="text-[color:var(--color-navy)]">yours</span> into that answer — and
+            run the Google Ads that catch the families still searching the old way.
           </motion.p>
 
           <motion.div
@@ -119,7 +122,10 @@ export function Hero() {
                 suffix: "k+",
                 label: "A year, one private resident",
               },
-              { value: 3, prefix: "£", suffix: "M+", label: "Ad spend managed by our team" },
+              // LEGAL: "by our team" overstated the size of the business and
+              // contradicted the founder bio, which says the spend was managed
+              // personally. Neutral wording holds the number without the claim.
+              { value: 3, prefix: "£", suffix: "M+", label: "Ad spend managed to date" },
             ].map((item) => (
               <div key={item.label}>
                 <dt className="display text-[2rem] text-[color:var(--color-sky)] sm:text-[2.75rem]">

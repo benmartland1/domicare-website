@@ -3,10 +3,19 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 
 /**
+* LEGAL: this is a SERVICE-COVERAGE badge, not an accreditation. It says which
+ * engines we track, which is a statement about our own service and is ours to
+ * make. It must not drift into implying endorsement by, partnership with, or
+ * certification from OpenAI, Google, Anthropic, Microsoft or Perplexity — whose
+ * logos appear here only to identify the products we track. Do not add words
+ * like "certified", "partner", "official" or "approved", and do not restyle it
+ * to imitate any of those companies\' own badges. It sat next to a "Certified
+ * Google Partner" badge that has since been removed; see lib/site.ts.
+ *
  * A 3D-tilt "AI Search Coverage" badge. Same tilt / shine infrastructure as
- * the Google and Shopify partner badges, rendered as a silver-finish card
- * with a row of colour-coded AI-engine chips (ChatGPT, Gemini, Perplexity,
- * Claude, Copilot).
+ * the Google Partner badge, rendered as a silver-finish card with a row of
+ * colour-coded AI-engine chips. The chip list is the `engines` array below —
+ * keep it in step with app/services/aeo/page.tsx.
  */
 
 type Props = {
@@ -39,12 +48,13 @@ const overlayColors = [
 ];
 
 // Real brand-mark pngs (1080×1080 source, resized to 200px in /public/engines)
+// LEGAL: these are the engines we actually track. Keep identical to the
+// `engines` array in app/services/aeo/page.tsx — a badge showing a logo we do
+// not report on is a false service claim, however small the logo is.
 const engines = [
   { name: "ChatGPT", src: "/engines/chatgpt.png" },
   { name: "Gemini", src: "/engines/gemini.png" },
   { name: "Perplexity", src: "/engines/perplexity.png" },
-  { name: "Claude", src: "/engines/claude.png" },
-  { name: "Copilot", src: "/engines/copilot.png" },
 ];
 
 export function AIEnginesBadge({ link, className }: Props) {
@@ -222,22 +232,25 @@ export function AIEnginesBadge({ link, className }: Props) {
     }
     `;
 
-  // 324 × 54 — same 54px card height, border inset, chip size and vertical
-  // inset as the Google Partner badge so the pair reads as one set.
-  const vbW = 324;
+  // 54px card height, border inset, chip size and vertical inset all match the
+  // Google Partner badge so the pair reads as one set. The card WIDTH is derived
+  // from the number of chips rather than hardcoded: the chip row starts at a
+  // fixed x so the gap after "AI Engines" stays constant, and the card grows or
+  // shrinks behind it. Change the engine list and the badge still looks right.
   const vbH = 54;
   const chipSize = 30;
   const chipGap = 6;
   const chipY = (vbH - chipSize) / 2;
   const chipsTotal = engines.length * chipSize + (engines.length - 1) * chipGap;
-  const chipsStartX = vbW - 14 - chipsTotal; // right-aligned with 14px right padding
+  const chipsStartX = 136; // clears the "AI Engines" title at 16px
+  const vbW = chipsStartX + chipsTotal + 14; // 14px right padding
 
   return (
     <a
       ref={ref}
       href={link ?? "/services/aeo"}
       aria-label="DomiCare - AI Search Coverage"
-      className={`block h-auto w-[240px] cursor-pointer sm:w-[264px] ${className ?? ""}`}
+      className={`block h-auto w-[187px] cursor-pointer sm:w-[205px] ${className ?? ""}`}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}

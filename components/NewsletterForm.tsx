@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -99,8 +100,17 @@ export function NewsletterForm() {
             <p className="mt-3 text-sm text-[color:#ff9d9d]">{error}</p>
           )}
 
+          {/* LEGAL: Art 13 requires transparency at the point of collection, so
+              this needs to link to the policy rather than just reassure. "No
+              third-party sharing" was also loose — the list is held by Resend
+              as our processor, which the policy names. */}
           <p className="mt-4 text-xs text-[color:var(--color-slate-2)]">
-            We only use your email to send the newsletter. No third-party sharing.
+            We only use your email to send the newsletter, and you can unsubscribe from any
+            email. Our email is delivered by Resend on our behalf. See our{" "}
+            <Link href="/privacy" className="underline underline-offset-2 hover:text-[color:var(--color-sky)]">
+              privacy policy
+            </Link>
+            .
           </p>
         </div>
       </div>

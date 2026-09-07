@@ -16,6 +16,10 @@ export type PromptRow = {
   prompt: string;
   /** Must match one of the tab labels (other than "All"). */
   sector: string;
+  /**
+   * LEGAL: ChatGPT, Gemini or Perplexity only — the engines we actually track.
+   * See `engines` in app/services/aeo/page.tsx.
+   */
   engine: string;
   named: string;
 };
@@ -56,7 +60,7 @@ const DEFAULT_ROWS: PromptRow[] = [
   {
     prompt: "care home that offers two weeks respite Lancashire",
     sector: "Respite",
-    engine: "Copilot",
+    engine: "Perplexity",
     named: "nobody specific",
   },
 ];

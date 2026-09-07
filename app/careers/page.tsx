@@ -11,10 +11,27 @@ export const metadata: Metadata = {
   alternates: { canonical: "/careers" },
 };
 
+/**
+ * LEGAL — READ BEFORE EDITING. A careers page describes how the business
+ * actually operates to people deciding whether to work here, so every line has
+ * to be true of the business as it is today, not as it is intended to become.
+ *
+ * Three claims were removed because DomiCare does not yet have the staff for
+ * them to be true:
+ *   - "We meet in Manchester for strategy days every quarter" — no such
+ *     standing commitment exists.
+ *   - "Fixed bands by role, published internally" — there are no published
+ *     internal pay bands.
+ *   - "No junior pools. Everyone here owns client work end-to-end." — stated a
+ *     team structure that does not exist.
+ *
+ * Anything reinstated here must be a practice that is already running. Write
+ * intent as intent ("we intend to"), never as established fact.
+ */
 const principles = [
   {
     title: "Senior only, by design",
-    body: "No junior pools. Everyone here owns client work end-to-end. If you want to hide inside a process, this won't fit.",
+    body: "Client work is owned end-to-end by the person doing it, not handed down to a junior pool. If you want to hide inside a process, this won't fit.",
   },
   {
     title: "Sector knowledge is the edge",
@@ -22,11 +39,11 @@ const principles = [
   },
   {
     title: "Remote-first, Manchester-rooted",
-    body: "Work from wherever you think best. We meet in Manchester for strategy days every quarter, and we visit clients' homes in person — you cannot write about a home you have never walked into.",
+    body: "Work from wherever you think best. We expect to meet in person regularly, and to visit clients' homes — you cannot write about a home you have never walked into.",
   },
   {
-    title: "Fair and transparent pay",
-    body: "Fixed bands by role, published internally. No silly bonuses. We share the upside when the business grows.",
+    title: "Straight answers on pay",
+    body: "We will tell you the number for the role, and how it was arrived at, before you invest time in a process. No silly bonuses.",
   },
 ];
 
@@ -74,9 +91,9 @@ Work on something with an obvious point.
             <div className="eyebrow">Current openings</div>
             <h2 className="display mt-4 text-3xl sm:text-4xl">No public roles right now.</h2>
             <p className="mt-5 max-w-2xl text-[color:var(--color-slate)]">
-              We hire opportunistically. If you're exceptional at Google Ads, AI search visibility, or you
-              think you'd be a great fit for a small senior team, email Ben directly.
-              Include work you're proud of.
+              DomiCare launched in 2026 and is small — read that as "you would be early", not
+              as a large team with a hiring pipeline. If you're exceptional at Google Ads or AI
+              search visibility, email Ben directly. Include work you're proud of.
             </p>
             <div className="mt-8">
               <Link

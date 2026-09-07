@@ -3,10 +3,12 @@ import Image from "next/image";
 import { ScrollReveal } from "./ScrollReveal";
 import { site } from "@/lib/site";
 
+// LEGAL: "Google Partner" is DomiSearch's status, not DomiCare's, and is never
+// written as "certified" — see the note on site.parent in lib/site.ts.
 const credentials = [
   "Five years running Google Ads, £3M+ managed spend",
-  "Google Partner",
-  "Built the AI search practice at DomiSearch from 2024",
+  "Google Partner, through DomiSearch",
+  "Built the AI search practice at DomiSearch",
   "Care homes and care groups only — no other verticals",
   "Manchester-based, working across the UK",
 ];
@@ -84,8 +86,10 @@ export function FounderSection() {
           </ScrollReveal>
           <ScrollReveal delay={220}>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[color:var(--color-slate)]">
-              I've spent five years running Google Ads and the last two on AI search visibility.
-              What changed for care is that the shortlist now gets written by an assistant, from
+              {/* LEGAL: dropped "and the last two on AI search visibility" — no
+                  duration claim, see lib/authors.ts. */}
+              I've spent five years running Google Ads, and AI search visibility is what I work
+              on now. What changed for care is that the shortlist now gets written by an assistant, from
               CQC records and carehome.co.uk reviews, before a human ever compares two homes. If
               you are not in that answer, you are not in the running.
             </p>
