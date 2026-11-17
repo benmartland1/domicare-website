@@ -40,10 +40,8 @@ type Testimonial = {
  * — and only once we have them.
  *
  * Tom Lynch's quote is from Trustpilot and predates the rebrand: he wrote "BMAR
- * Digital". The substitution is now marked with square brackets, which is the
- * standard convention for an editorial change inside a quotation. Silently
- * swapping the name made the displayed text differ from the published review
- * a reader could go and check.
+ * Digital". It is displayed as "DomiSearch" at Ben's instruction. Ideally Tom
+ * updates the Trustpilot review to match, so the public text agrees.
  *
  * Count matters: the featured card takes one, the rest sit in a two-column grid.
  * Keep this list at an odd length so the grid never leaves a hanging single.
@@ -90,7 +88,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Ben @ [DomiSearch] has helped my agency thrive via his work with Paid Google Search Ads bringing me in more and more high quality leads month on month. Continuing to work with [DomiSearch] really is a no brainer.",
+      "Ben @ DomiSearch has helped my agency thrive via his work with Paid Google Search Ads bringing me in more and more high quality leads month on month. Continuing to work with DomiSearch really is a no brainer.",
     name: "Tom Lynch",
     role: "Founder",
     company: "Social Attom",
